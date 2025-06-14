@@ -9,6 +9,7 @@ import SignUp from "./Pages/SignUp";
 import AuthProvider from "./Provider/AuthProvider";
 import PrivetRoute from "./Provider/PrivetRoute";
 import AllArticles from "./Pages/AllArticles";
+import PostArticle from "./Pages/PostArticle";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,14 @@ const router = createBrowserRouter([
         element: (
           <PrivetRoute>
             <AllArticles></AllArticles>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "postArticles",
+        element: (
+          <PrivetRoute>
+            <PostArticle></PostArticle>
           </PrivetRoute>
         ),
       },

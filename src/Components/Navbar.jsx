@@ -44,17 +44,9 @@ const Navbar = () => {
       <li className="text-cyan-700 font-medium">
         <NavLink
           className={({ isActive }) => (isActive ? "underline" : "")}
-          to={"/"}
+          to={"postArticles"}
         >
           Post Article
-        </NavLink>
-      </li>
-      <li className="text-cyan-700 font-medium">
-        <NavLink
-          className={({ isActive }) => (isActive ? "underline" : "")}
-          to={"/"}
-        >
-          About Us
         </NavLink>
       </li>
     </>
