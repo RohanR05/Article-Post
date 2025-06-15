@@ -6,7 +6,11 @@ const articlesPromise = fetch("http://localhost:222/articles").then((res) =>
 );
 
 const AllArticles = () => {
-  return <AllArticleCard articlesPromise={articlesPromise}></AllArticleCard>;
+  return (
+    <div className="md:p-5 lg:p-10">
+      <AllArticleCard articlesPromise={articlesPromise}></AllArticleCard>
+    </div>
+  );
 };
 
 export default AllArticles;
