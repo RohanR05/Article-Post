@@ -98,7 +98,10 @@ const PostArticle = () => {
           />
         </div>
 
-        <button type="submit" className="btn bg-cyan-700 text-white w-full mt-4">
+        <button
+          type="submit"
+          className="btn bg-cyan-700 text-white w-full mt-4"
+        >
           Create
         </button>
       </form>
