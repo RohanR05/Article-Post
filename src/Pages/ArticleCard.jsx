@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router";
 
 const ArticleCard = ({ data }) => {
-  const { title, author_name, publishedAt } = data;
+  const { _id,title, author_name, publishedAt } = data;
 
   const formattedDate = new Date(publishedAt).toLocaleDateString("en-US", {
     year: "numeric",
@@ -16,7 +17,7 @@ const ArticleCard = ({ data }) => {
         <p>{title}</p>
         <p>Published: {formattedDate}</p>
         <div className="justify-end card-actions">
-          <button className="btn text-cyan-50 bg-cyan-700">Read More</button>
+          <button className="btn text-cyan-50 bg-cyan-700"><Link to={`/cardDetails/${_id}`}>Read More</Link></button>
         </div>
       </div>
     </div>

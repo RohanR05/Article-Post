@@ -10,6 +10,7 @@ import AuthProvider from "./Provider/AuthProvider";
 import PrivetRoute from "./Provider/PrivetRoute";
 import AllArticles from "./Pages/AllArticles";
 import PostArticle from "./Pages/PostArticle";
+import ArticleDetails from './Pages/ArticleDetails'
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,11 @@ const router = createBrowserRouter([
             <AllArticles></AllArticles>
           </PrivetRoute>
         ),
+      },
+      {
+        path: "cardDetails/:id",
+        loader: () => fetch("http://localhost:222/articles"),
+        Component:ArticleDetails
       },
       {
         path: "postArticles",
