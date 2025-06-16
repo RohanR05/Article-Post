@@ -28,7 +28,7 @@ const Navbar = () => {
       <li className="text-cyan-700 font-medium">
         <NavLink
           className={({ isActive }) => (isActive ? "underline" : "")}
-          to={"allArticles"}
+          to={"/allArticles"}
         >
           All Articles
         </NavLink>
@@ -36,7 +36,7 @@ const Navbar = () => {
       <li className="text-cyan-700 font-medium">
         <NavLink
           className={({ isActive }) => (isActive ? "underline" : "")}
-          to={"/"}
+          to={"/myArticles"}
         >
           My Articles
         </NavLink>
@@ -44,7 +44,7 @@ const Navbar = () => {
       <li className="text-cyan-700 font-medium">
         <NavLink
           className={({ isActive }) => (isActive ? "underline" : "")}
-          to={"postArticles"}
+          to={"/postArticles"}
         >
           Post Article
         </NavLink>

@@ -1,7 +1,7 @@
 import React, { use } from "react";
-import { AuthContext } from "../Provider/AuthContext";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Provider/AuthContext";
 
 const PostArticle = () => {
   const { user } = use(AuthContext);
@@ -81,7 +81,7 @@ const PostArticle = () => {
         <div>
           <label className="label">Content</label>
           <textarea
-            name="description"
+            name="content"
             placeholder="Describe your thoughts"
             className="textarea textarea-bordered w-full"
             required

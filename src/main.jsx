@@ -8,9 +8,10 @@ import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
 import AuthProvider from "./Provider/AuthProvider";
 import PrivetRoute from "./Provider/PrivetRoute";
-import AllArticles from "./Pages/AllArticles";
-import PostArticle from "./Pages/PostArticle";
-import ArticleDetails from './Pages/ArticleDetails'
+import PostArticle from "./Pages/PostArticles/PostArticle";
+import AllArticles from "./Pages/AllArticles/AllArticles";
+import MyArticles from "./Pages/MyArticles/MyArticles";
+import ArticleDetails from "./Pages/AllArticles/ArticleDetails";
 
 const router = createBrowserRouter([
   {
@@ -40,13 +41,23 @@ const router = createBrowserRouter([
       {
         path: "cardDetails/:id",
         loader: () => fetch("http://localhost:222/articles"),
-        Component:ArticleDetails
+        Component: ArticleDetails,
       },
       {
         path: "postArticles",
         element: (
           <PrivetRoute>
             <PostArticle></PostArticle>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "myArticles",
+        loader: () =>
+          fetch("http://localhost:222/articles").then((res) => res.json()),
+        element: (
+          <PrivetRoute>
+            <MyArticles></MyArticles>
           </PrivetRoute>
         ),
       },

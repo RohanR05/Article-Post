@@ -1,7 +1,7 @@
 import React, { use } from "react";
 import { useLoaderData, useParams } from "react-router";
+import { AuthContext } from "../../Provider/AuthContext";
 import CardDertails from "./CardDertails";
-import { AuthContext } from "../Provider/AuthContext";
 
 const ArticleDetails = () => {
   const data = useLoaderData();
