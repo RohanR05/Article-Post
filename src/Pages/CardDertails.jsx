@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FcLike } from "react-icons/fc";
 
-const CardDertails = ({ article }) => {
+const CardDertails = ({ article,currentUser }) => {
   const {
     _id,
     title,
@@ -42,15 +42,19 @@ const CardDertails = ({ article }) => {
     }
   };
 
-  const handleCommentSubmit = (e) => {
-    e.preventDefault();
-    if (comment.trim()) {
-      setComments((prev) => [comment.trim(), ...prev]);
-      setComment("");
-    }
-  };
+const handleCommentSubmit = (e) => {
+  e.preventDefault();
+  if (comment.trim() && currentUser?.displayName) {
+    const newComment = {
+      name: currentUser.displayName,
+      text: comment.trim(),
+    };
+    setComments((prev) => [newComment, ...prev]);
+    setComment("");
+  }
+};
 
-  const moreComments = comments.slice(3);
+
 
   return (
     <div className="max-w-xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-10">
@@ -89,42 +93,48 @@ const CardDertails = ({ article }) => {
             className="flex items-center gap-1"
           >
             <FcLike size={26} />
-            <span className="text-gray-700">{likes} Like{likes !== 1 ? "s" : ""}</span>
+            <span className="text-gray-700">
+              {likes} Like{likes !== 1 ? "s" : ""}
+            </span>
           </button>
         </div>
 
         {/* Comment Input */}
-        <form onSubmit={handleCommentSubmit} className="mt-6">
-          <textarea
-            className="w-full border border-cyan-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-            placeholder="Write a comment..."
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-          ></textarea>
-          <button
-            type="submit"
-            className="bg-cyan-700 text-white px-4 py-2 rounded mt-2 hover:bg-cyan-800"
-          >
-            Post Comment
-          </button>
-        </form>
+<form onSubmit={handleCommentSubmit} className="mt-6 space-y-2">
+  <textarea
+    className="w-full border border-cyan-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+    placeholder="Write a comment..."
+    value={comment}
+    onChange={(e) => setComment(e.target.value)}
+    required
+  ></textarea>
+  <button
+    type="submit"
+    className="bg-cyan-700 text-white px-4 py-2 rounded hover:bg-cyan-800"
+  >
+    Post Comment
+  </button>
+</form>
 
         {/* Scrollable for Remaining Comments */}
-        {moreComments.length > 0 && (
-          <div className="mt-4">
-            <h4 className="text-sm font-medium text-gray-600 mb-1">Comments:</h4>
-            <div className="max-h-32 overflow-y-auto pr-2 space-y-2 scrollbar-thin scrollbar-thumb-cyan-400">
-              {moreComments.map((c, index) => (
-                <div
-                  key={index + 3}
-                  className="bg-cyan-100 p-2 rounded text-gray-800 border border-cyan-200"
-                >
-                  {c}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+{comments.length > 0 && (
+  <div className="mt-4">
+    <h4 className="text-sm font-medium text-gray-600 mb-1">Comments:</h4>
+    <div className="max-h-40 overflow-y-auto pr-2 space-y-2 scrollbar-thin scrollbar-thumb-cyan-400">
+      {comments.map((c, index) => (
+        <div
+          key={index}
+          className="bg-cyan-100 p-2 rounded text-gray-800 border border-cyan-200"
+        >
+          <p className="font-semibold text-sm text-cyan-800">{c.name}</p>
+          <p className="text-sm">{c.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
+
+
       </div>
     </div>
   );
