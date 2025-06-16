@@ -1,5 +1,7 @@
 import React, { use } from "react";
 import { AuthContext } from "../Provider/AuthContext";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const PostArticle = () => {
   const { user } = use(AuthContext);
@@ -9,7 +11,37 @@ const PostArticle = () => {
     const form = e.target;
     const formData = new FormData(form);
     const PostArticle = Object.fromEntries(formData.entries());
+
+    PostArticle.tags = PostArticle.tags
+      .split(",")
+      .map((tag) => tag.trim())
+      .filter((tag) => tag.length > 0);
+
+    PostArticle.publishedAt = new Date().toISOString();
+    PostArticle.publishedAt = new Date().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+
     console.log(PostArticle);
+
+    axios
+      .post("http://localhost:222/articles", PostArticle)
+      .then((res) => {
+        if (res.data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your article has been post successfully!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -19,19 +51,9 @@ const PostArticle = () => {
         <div>
           <label className="label">Title</label>
           <input
-            name="groupName"
+            name="title"
             placeholder="Enter title name"
             className="input input-bordered w-full"
-            required
-          />
-        </div>
-
-        <div>
-          <label className="label">Content</label>
-          <textarea
-            name="description"
-            placeholder="Describe your thoughts"
-            className="textarea textarea-bordered w-full"
             required
           />
         </div>
@@ -57,19 +79,30 @@ const PostArticle = () => {
         </div>
 
         <div>
-          <label className="label">Date</label>
+          <label className="label">Content</label>
+          <textarea
+            name="description"
+            placeholder="Describe your thoughts"
+            className="textarea textarea-bordered w-full"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="label">Tags</label>
           <input
-            name="startDate"
-            type="date"
+            name="tags"
+            type="text"
             className="input input-bordered w-full"
             required
+            placeholder="Tags (Separeted by comma)"
           />
         </div>
 
         <div>
           <label className="label">Thumbnail Image</label>
           <input
-            name="image"
+            name="author_photo"
             type="text"
             placeholder="https://example.com/image.jpg"
             className="input input-bordered w-full"
@@ -80,6 +113,7 @@ const PostArticle = () => {
         <div>
           <label className="label">User Name</label>
           <input
+            name="author_name"
             type="text"
             className="input input-bordered w-full"
             value={user?.displayName || ""}
