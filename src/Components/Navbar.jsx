@@ -17,7 +17,7 @@ const Navbar = () => {
 
   const links = (
     <>
-      <li className="text-cyan-700 font-medium">
+      <li className="text-cyan-700 dark:text-cyan-50 font-medium">
         <NavLink
           className={({ isActive }) => (isActive ? "underline" : "")}
           to={"/"}
@@ -25,7 +25,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li className="text-cyan-700 font-medium">
+      <li className="text-cyan-700 dark:text-cyan-50 font-medium">
         <NavLink
           className={({ isActive }) => (isActive ? "underline" : "")}
           to={"/allArticles"}
@@ -33,7 +33,7 @@ const Navbar = () => {
           All Articles
         </NavLink>
       </li>
-      <li className="text-cyan-700 font-medium">
+      <li className="text-cyan-700 dark:text-cyan-50 font-medium">
         <NavLink
           className={({ isActive }) => (isActive ? "underline" : "")}
           to={"/myArticles"}
@@ -41,7 +41,7 @@ const Navbar = () => {
           My Articles
         </NavLink>
       </li>
-      <li className="text-cyan-700 font-medium">
+      <li className="text-cyan-700 dark:text-cyan-50 font-medium">
         <NavLink
           className={({ isActive }) => (isActive ? "underline" : "")}
           to={"/postArticles"}
@@ -54,7 +54,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar border-2 border-cyan-700 bg-cyan-50 shadow-sm">
+      <div className="navbar border-2 border-cyan-700 bg-cyan-50 shadow-sm dark:bg-cyan-700 dark:text-cyan-50">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">

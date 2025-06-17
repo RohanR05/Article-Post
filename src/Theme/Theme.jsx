@@ -1,31 +1,29 @@
-// ../Theme/Theme.jsx
 import { useEffect, useState } from "react";
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState(() =>
-    localStorage.getItem("theme") || "light"
-  );
+  const [isDark, setIsDark] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
 
   useEffect(() => {
-    const root = window.document.documentElement;
-    if (theme === "dark") {
+    const root = document.documentElement;
+    if (isDark) {
       root.classList.add("dark");
+      localStorage.setItem("theme", "dark");
     } else {
       root.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+  }, [isDark]);
 
   return (
     <button
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-      className="mt-4 px-4 py-2 rounded bg-cyan-700 text-white dark:bg-cyan-100 dark:text-black"
+      onClick={() => setIsDark(!isDark)}
+      className="btn btn-sm bg-cyan-50 dark:bg-cyan-700 text-cyan-700 dark:text-cyan-50"
     >
-      {theme === "light" ? "Dark Mode" : "Light Mode"}
+      {isDark ? "Light Mode" : "Dark Mode"}
     </button>
   );
 };
 
 export default ThemeToggle;
-
-

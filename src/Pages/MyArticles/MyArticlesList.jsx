@@ -29,7 +29,7 @@ const MyArticlesList = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:222/articles/${id}`, {
+        fetch(`https://assignment11-server-side-lyart.vercel.app/articles/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

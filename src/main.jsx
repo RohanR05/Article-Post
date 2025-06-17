@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: "cardDetails/:id",
-        loader: () => fetch("http://localhost:222/articles"),
+        loader: () => fetch("https://assignment11-server-side-lyart.vercel.app/articles"),
         Component: ArticleDetails,
       },
       {
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       {
         path: "myArticles",
         loader: () =>
-          fetch("http://localhost:222/articles").then((res) => res.json()),
+          fetch("https://assignment11-server-side-lyart.vercel.app/articles").then((res) => res.json()),
         element: (
           <PrivetRoute>
             <MyArticles></MyArticles>

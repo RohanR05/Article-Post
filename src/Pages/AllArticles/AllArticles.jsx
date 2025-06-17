@@ -1,7 +1,7 @@
 import AllArticleCard from "./AllArticleCard";
 
 
-const articlesPromise = fetch("http://localhost:222/articles").then((res) =>
+const articlesPromise = fetch("https://assignment11-server-side-lyart.vercel.app/articles").then((res) =>
   res.json()
 );
 

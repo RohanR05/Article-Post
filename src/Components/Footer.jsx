@@ -1,11 +1,13 @@
+import ThemeToggle from "../Theme/Theme";
 
 const Footer = () => {
   return (
-    <footer className="footer footer-horizontal footer-center p-10 md:border-4 border-cyan-700 text-cyan-700 bg-cyan-50 mt-20 ">
+    <footer className="footer footer-horizontal footer-center p-10 md:border-4 border-cyan-700 text-cyan-700 bg-cyan-50 mt-20 dark:bg-cyan-700 dark:text-cyan-50">
       <aside>
         <a className="text-xl md:text-2xl font-medium text-black">
-          <span className="text-cyan-700 font-bold">Next</span>Knowledge
+          <span className="text-cyan-700 font-bold dark:text-cyan-50">Next</span>Knowledge
         </a>
+        <ThemeToggle></ThemeToggle>
         <p className="font-medium">About Us</p>
         <p className="font-medium">Contect Us</p>
         <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
