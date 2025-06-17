@@ -82,7 +82,7 @@ const Navbar = () => {
             </ul>
           </div>
           <a className="text-xl md:text-2xl font-medium">
-            <span className="text-cyan-700 font-bold">Next</span>Knowledge
+            <span className="text-cyan-700 font-bold  dark:text-cyan-50">Next</span>Knowledge
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">

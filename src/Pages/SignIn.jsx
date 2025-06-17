@@ -56,7 +56,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="card mx-auto my-20 bg-cyan-50 w-full max-w-sm shrink-0 shadow-xl shadow-cyan-700 text-cyan-700">
+    <div className="card mx-auto my-20 bg-cyan-50 w-full max-w-sm shrink-0 shadow-xl shadow-cyan-700 text-cyan-700  dark:bg-cyan-700 dark:text-cyan-50">
       <form onSubmit={handleSignIn} className="card-body">
         <fieldset className="fieldset">
           <h1 className="text-5xl font-bold">Sign In now!</h1>
