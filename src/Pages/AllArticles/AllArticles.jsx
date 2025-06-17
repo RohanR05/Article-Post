@@ -7,7 +7,7 @@ const articlesPromise = fetch("https://assignment11-server-side-lyart.vercel.app
 
 const AllArticles = () => {
   return (
-    <div className="md:p-5 lg:p-10">
+    <div className="md:p-5 lg:p-10 dark:text-cyan-50">
       <AllArticleCard articlesPromise={articlesPromise}></AllArticleCard>
     </div>
   );

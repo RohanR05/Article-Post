@@ -47,7 +47,7 @@ const MyArticlesList = () => {
   };
 
   return (
-    <div className="p-4 dark:bg-[#3d365c] dark:text-[#f3f3e0]">
+    <div className="p-4 dark:bg-cyan-700 dark:text-cyan-50">
       <h2 className="text-2xl font-bold mb-4 text-center">My Articles</h2>
 
       {myArticles.length === 0 ? (
@@ -65,7 +65,7 @@ const MyArticlesList = () => {
             </thead>
             <tbody>
               {myArticles.map((item) => (
-                <tr key={item._id} className="hover:bg-cyan-50">
+                <tr key={item._id} className="dark:bg-cyan-700 dark:text-cyan-50">
                   <td>
                     <div className="flex items-center gap-3">
                       <div className="avatar">
@@ -79,7 +79,7 @@ const MyArticlesList = () => {
                       </div>
                       <div>
                         <div className="font-bold">{item.name}</div>
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm text-gray-500 dark:text-cyan-50">
                           {item.publishedAt}
                         </div>
                       </div>

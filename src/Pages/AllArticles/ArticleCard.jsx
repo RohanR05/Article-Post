@@ -11,7 +11,7 @@ const ArticleCard = ({ data }) => {
   });
 
   return (
-    <div className="card bg-cyan-50 text-cyan-700 card-xl shadow-lg shadow-cyan-700">
+    <div className="card bg-cyan-50 text-cyan-700 card-xl shadow-lg shadow-cyan-700 dark:bg-cyan-700 dark:text-cyan-50">
       <div className="card-body">
         <h2 className="card-title">{author_name}</h2>
         <p>Title: {title}</p>
