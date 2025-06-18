@@ -1,8 +1,8 @@
 import React, { use, useEffect, useState } from "react";
- // or "react-router" if you're using v5
+// or "react-router" if you're using v5
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthContext";
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 
 const MyArticlesList = () => {
   const { user } = use(AuthContext);
@@ -29,16 +29,23 @@ const MyArticlesList = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://assignment11-server-side-lyart.vercel.app/articles/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://assignment11-server-side-lyart.vercel.app/articles/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
               setMyArticles((prev) =>
                 prev.filter((article) => article._id !== id)
               );
-              Swal.fire("Deleted!", "Your article has been deleted.", "success");
+              Swal.fire(
+                "Deleted!",
+                "Your article has been deleted.",
+                "success"
+              );
             }
           })
           .catch((err) => console.error("Delete error:", err));
@@ -65,7 +72,10 @@ const MyArticlesList = () => {
             </thead>
             <tbody>
               {myArticles.map((item) => (
-                <tr key={item._id} className="dark:bg-cyan-700 dark:text-cyan-50">
+                <tr
+                  key={item._id}
+                  className="dark:bg-cyan-700 dark:text-cyan-50"
+                >
                   <td>
                     <div className="flex items-center gap-3">
                       <div className="avatar">
@@ -89,7 +99,7 @@ const MyArticlesList = () => {
                   <td className="text-sm">{item.category}</td>
                   <td className="flex gap-2">
                     <button className="btn btn-xs bg-green-500 text-white hover:bg-green-600">
-                      Edit
+                      <Link to={`/detailsMyArticle/${item._id}`}>Details</Link>
                     </button>
                     <button
                       onClick={() => handleDelete(item._id)}

@@ -12,6 +12,8 @@ import PostArticle from "./Pages/PostArticles/PostArticle";
 import AllArticles from "./Pages/AllArticles/AllArticles";
 import MyArticles from "./Pages/MyArticles/MyArticles";
 import ArticleDetails from "./Pages/AllArticles/ArticleDetails";
+import UpdateArticle from "./Pages/MyArticles/UpdateArticle";
+import DetailsMyArticle from "./Pages/MyArticles/DetailsMyArticle";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +63,11 @@ const router = createBrowserRouter([
           </PrivetRoute>
         ),
       },
+      {
+        path:'detailsMyArticle/:id',
+        loader:({params})=> fetch(`https://assignment11-server-side-lyart.vercel.app/articles/${params.id}`),
+        Component:DetailsMyArticle
+      }
     ],
   },
 ]);

@@ -17,7 +17,7 @@ const Navbar = () => {
 
   const links = (
     <>
-      <li className="text-cyan-700 dark:text-cyan-50 font-medium">
+      <li className="text-cyan-700 dark:text-cyan-50 dark:bg-cyan-700 font-medium">
         <NavLink
           className={({ isActive }) => (isActive ? "underline" : "")}
           to={"/"}
@@ -25,7 +25,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li className="text-cyan-700 dark:text-cyan-50 font-medium">
+      <li className="text-cyan-700 dark:text-cyan-50 dark:bg-cyan-700 font-medium">
         <NavLink
           className={({ isActive }) => (isActive ? "underline" : "")}
           to={"/allArticles"}
@@ -33,7 +33,7 @@ const Navbar = () => {
           All Articles
         </NavLink>
       </li>
-      <li className="text-cyan-700 dark:text-cyan-50 font-medium">
+      <li className="text-cyan-700 dark:text-cyan-50 dark:bg-cyan-700 font-medium">
         <NavLink
           className={({ isActive }) => (isActive ? "underline" : "")}
           to={"/myArticles"}
@@ -41,7 +41,7 @@ const Navbar = () => {
           My Articles
         </NavLink>
       </li>
-      <li className="text-cyan-700 dark:text-cyan-50 font-medium">
+      <li className="text-cyan-700 dark:text-cyan-50 dark:bg-cyan-700 font-medium">
         <NavLink
           className={({ isActive }) => (isActive ? "underline" : "")}
           to={"/postArticles"}
@@ -82,11 +82,14 @@ const Navbar = () => {
             </ul>
           </div>
           <a className="text-xl md:text-2xl font-medium">
-            <span className="text-cyan-700 font-bold  dark:text-cyan-50">Next</span>Knowledge
+            <span className="text-cyan-700 font-bold  dark:text-cyan-50">
+              Next
+            </span>
+            Knowledge
           </a>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{links}</ul>
+        <div className="navbar-center hidden lg:flex ">
+          <ul className="menu menu-horizontal px-1 ">{links}</ul>
         </div>
         <div className="navbar-end">
           <div className="">
@@ -99,7 +102,7 @@ const Navbar = () => {
                   alt="Profile"
                 />
 
-                <div className="absolute right-0 top-14 bg-white dark:bg-gray-800 text-black dark:text-white shadow-lg rounded-lg p-2 opacity-0 peer-hover:opacity-100 hover:opacity-100 transition-opacity z-10 min-w-[200px] pointer-events-auto">
+                <div className="absolute right-0 top-14 bg-white dark:bg-cyan-700 text-black dark:text-white shadow-lg rounded-lg p-2 opacity-0 peer-hover:opacity-100 hover:opacity-100 transition-opacity z-10 min-w-[200px]">
                   <p className="text-md font-semibold mb-2">
                     Name: {user?.displayName || "User"}
                   </p>

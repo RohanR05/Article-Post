@@ -91,7 +91,7 @@ const CardDertails = ({ article, currentUser }) => {
             className="flex items-center gap-1"
           >
             <FcLike size={26} />
-            <span className="text-gray-700">
+            <span className="text-gray-700 dark:text-cyan-50">
               {likes} Like{likes !== 1 ? "s" : ""}
             </span>
           </button>
