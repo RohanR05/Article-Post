@@ -101,6 +101,9 @@ const MyArticlesList = () => {
                     <button className="btn btn-xs bg-green-500 text-white hover:bg-green-600">
                       <Link to={`/detailsMyArticle/${item._id}`}>Details</Link>
                     </button>
+                    <button className="btn btn-xs bg-purple-500 text-white hover:bg-purple-600">
+                      <Link to={`/updateArticle/${item._id}`}>Edit</Link>
+                    </button>
                     <button
                       onClick={() => handleDelete(item._id)}
                       className="btn btn-xs bg-red-500 text-white hover:bg-red-600"

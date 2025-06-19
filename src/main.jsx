@@ -67,6 +67,11 @@ const router = createBrowserRouter([
         path:'detailsMyArticle/:id',
         loader:({params})=> fetch(`https://assignment11-server-side-lyart.vercel.app/articles/${params.id}`),
         Component:DetailsMyArticle
+      },
+      {
+        path:'updateArticle/:id',
+        loader:({params})=> fetch(`https://assignment11-server-side-lyart.vercel.app/articles/${params.id}`),
+        Component:UpdateArticle
       }
     ],
   },
