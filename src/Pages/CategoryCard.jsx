@@ -9,7 +9,7 @@ const CategoryArticles = () => {
 
   return (
     <div className="my-10 px-4">
-      <h2 className="text-3xl font-bold text-center mb-6 text-cyan-800 dark:text-cyan-100">
+      <h2 className="text-3xl font-bold text-center mb-6 text-cyan-800 ">
         Articles in "{categoryName}"
       </h2>
       {filtered.length > 0 ? (

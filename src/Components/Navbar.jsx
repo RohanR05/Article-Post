@@ -1,5 +1,5 @@
 import React, { use } from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
 
 const Navbar = () => {
@@ -81,12 +81,12 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <a className="text-xl md:text-2xl font-medium">
+          <Link to="/" className="text-xl md:text-2xl font-medium">
             <span className="text-cyan-700 font-bold  dark:text-cyan-50">
               Next
             </span>
             Knowledge
-          </a>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex ">
           <ul className="menu menu-horizontal px-1 ">{links}</ul>
@@ -101,8 +101,7 @@ const Navbar = () => {
                   src={user?.photoURL || "https://via.placeholder.com/150"}
                   alt="Profile"
                 />
-
-                <div className="absolute right-0 top-14 bg-white dark:bg-cyan-700 text-black dark:text-white shadow-lg rounded-lg p-2 opacity-0 peer-hover:opacity-100 hover:opacity-100 transition-opacity z-10 min-w-[200px]">
+                <div className="absolute right-0 top-14 bg-white dark:bg-cyan-700 text-black dark:text-white shadow-lg rounded-lg p-2 opacity-0 peer-hover:opacity-100 hover:opacity-100 transition-opacity z-10 min-w-[200px] pointer-events-none peer-hover:pointer-events-auto hover:pointer-events-auto">
                   <p className="text-md font-semibold mb-2">
                     Name: {user?.displayName || "User"}
                   </p>
