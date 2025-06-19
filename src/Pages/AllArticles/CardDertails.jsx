@@ -55,7 +55,7 @@ const CardDertails = ({ article, currentUser }) => {
   };
 
   return (
-    <div className="max-w-xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-10">
+    <div className=" max-w-screen-lg mx-auto bg-cyan-50  text-cyan-700 dark:bg-cyan-700 dark:text-cyan-50 shadow-lg rounded-lg overflow-hidden mt-10">
       <div className="flex justify-center mt-4">
         <img
           src={author_photo}
@@ -63,11 +63,16 @@ const CardDertails = ({ article, currentUser }) => {
           className="w-24 h-24 object-cover rounded-full border-2 border-cyan-700"
         />
       </div>
-
+      
       <div className="p-6 dark:bg-cyan-700 dark:text-cyan-50">
-        <h2 className="text-3xl font-bold mb-2">{title}</h2>
-        <p className="text-sm text-gray-500 mb-2">Category: {category}</p>
-        <p className="text-gray-700 mb-4 dark:text-cyan-50">{content}</p>
+        <h1 className="text-2xl font-bold mb-2">{title}</h1>
+        <p className="text-sm text-gray-600 mb-4 dark:text-cyan-50">
+          Category: <span className="font-medium">{category}</span> |{" "}
+          {publishedAt}
+        </p>
+        <pre className="bg-gray-100 p-4  dark:bg-cyan-600 rounded-md text-sm overflow-x-auto ">
+          <code className="dark:text-cyan-50">{content}</code>
+        </pre>
 
         <ul className="mb-4 text-gray-600 space-y-1 dark:text-cyan-50">
           {author_name && (
@@ -98,7 +103,10 @@ const CardDertails = ({ article, currentUser }) => {
         </div>
 
         {/* Comment Input */}
-        <form onSubmit={handleCommentSubmit} className="mt-6 space-y-2 dark:bg-cyan-700 dark:text-cyan-50">
+        <form
+          onSubmit={handleCommentSubmit}
+          className="mt-6 space-y-2 dark:bg-cyan-700 dark:text-cyan-50"
+        >
           <textarea
             className="w-full border border-cyan-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-cyan-500"
             placeholder="Write a comment..."
@@ -117,7 +125,7 @@ const CardDertails = ({ article, currentUser }) => {
         {/* Scrollable for Remaining Comments */}
         {comments.length > 0 && (
           <div className="mt-4 dark:text-cyan-50">
-            <h4 className="text-sm font-medium text-gray-600 mb-1 dark:text-cyan-50" >
+            <h4 className="text-sm font-medium text-gray-600 mb-1 dark:text-cyan-50">
               Comments:
             </h4>
             <div className="max-h-40 overflow-y-auto pr-2 space-y-2 scrollbar-thin scrollbar-thumb-cyan-400">
