@@ -23,6 +23,10 @@ const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
+        loader: () =>
+          fetch(
+            'https://assignment11-server-side-lyart.vercel.app/articles'
+          ),
       },
       {
         path: "signIn",
@@ -42,7 +46,8 @@ const router = createBrowserRouter([
       },
       {
         path: "cardDetails/:id",
-        loader: () => fetch("https://assignment11-server-side-lyart.vercel.app/articles"),
+        loader: () =>
+          fetch("https://assignment11-server-side-lyart.vercel.app/articles"),
         Component: ArticleDetails,
       },
       {
@@ -56,7 +61,9 @@ const router = createBrowserRouter([
       {
         path: "myArticles",
         loader: () =>
-          fetch("https://assignment11-server-side-lyart.vercel.app/articles").then((res) => res.json()),
+          fetch(
+            "https://assignment11-server-side-lyart.vercel.app/articles"
+          ).then((res) => res.json()),
         element: (
           <PrivetRoute>
             <MyArticles></MyArticles>
@@ -64,15 +71,21 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path:'detailsMyArticle/:id',
-        loader:({params})=> fetch(`https://assignment11-server-side-lyart.vercel.app/articles/${params.id}`),
-        Component:DetailsMyArticle
+        path: "detailsMyArticle/:id",
+        loader: ({ params }) =>
+          fetch(
+            `https://assignment11-server-side-lyart.vercel.app/articles/${params.id}`
+          ),
+        Component: DetailsMyArticle,
       },
       {
-        path:'updateArticle/:id',
-        loader:({params})=> fetch(`https://assignment11-server-side-lyart.vercel.app/articles/${params.id}`),
-        Component:UpdateArticle
-      }
+        path: "updateArticle/:id",
+        loader: ({ params }) =>
+          fetch(
+            `https://assignment11-server-side-lyart.vercel.app/articles/${params.id}`
+          ),
+        Component: UpdateArticle,
+      },
     ],
   },
 ]);
