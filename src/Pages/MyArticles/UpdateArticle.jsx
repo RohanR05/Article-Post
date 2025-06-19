@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData } from "react-router";
+import Swal from "sweetalert2";
 
 const UpdateArticle = () => {
   const user = useLoaderData();
@@ -30,7 +31,17 @@ const UpdateArticle = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data, "after update");
+        if (data.modifiedCount) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your edit has been done",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          console.log(data, "after update");
+          form.reset()
+        }
       });
   };
 

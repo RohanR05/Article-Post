@@ -37,6 +37,7 @@ const PostArticle = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          form.reset()
         }
       })
       .catch((error) => {
