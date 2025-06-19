@@ -14,6 +14,7 @@ import MyArticles from "./Pages/MyArticles/MyArticles";
 import ArticleDetails from "./Pages/AllArticles/ArticleDetails";
 import UpdateArticle from "./Pages/MyArticles/UpdateArticle";
 import DetailsMyArticle from "./Pages/MyArticles/DetailsMyArticle";
+import NotFound from "./Components/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -24,9 +25,7 @@ const router = createBrowserRouter([
         index: true,
         Component: Home,
         loader: () =>
-          fetch(
-            'https://assignment11-server-side-lyart.vercel.app/articles'
-          ),
+          fetch("https://assignment11-server-side-lyart.vercel.app/articles"),
       },
       {
         path: "signIn",
@@ -85,6 +84,10 @@ const router = createBrowserRouter([
             `https://assignment11-server-side-lyart.vercel.app/articles/${params.id}`
           ),
         Component: UpdateArticle,
+      },
+      {
+        path: "*",
+        element: <NotFound/>
       },
     ],
   },
