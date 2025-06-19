@@ -15,6 +15,7 @@ import ArticleDetails from "./Pages/AllArticles/ArticleDetails";
 import UpdateArticle from "./Pages/MyArticles/UpdateArticle";
 import DetailsMyArticle from "./Pages/MyArticles/DetailsMyArticle";
 import NotFound from "./Components/NotFound";
+import CategoryArticles from "./Pages/CategoryCard";
 
 const router = createBrowserRouter([
   {
@@ -86,8 +87,14 @@ const router = createBrowserRouter([
         Component: UpdateArticle,
       },
       {
+        path: "category/:categoryName",
+        loader: () =>
+          fetch("https://assignment11-server-side-lyart.vercel.app/articles"),
+        element: <CategoryArticles />,
+      },
+      {
         path: "*",
-        element: <NotFound/>
+        element: <NotFound />,
       },
     ],
   },
