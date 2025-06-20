@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import ThemeToggle from "../Theme/Theme";
 
 const Footer = () => {
@@ -8,8 +9,8 @@ const Footer = () => {
           <span className="text-cyan-700 font-bold dark:text-cyan-50">Next</span>Knowledge
         </a>
         <ThemeToggle></ThemeToggle>
-        <p className="font-medium">About Us</p>
-        <p className="font-medium">Contect Us</p>
+        <Link to='/serverDown' className="font-medium">About Us</Link>
+        <Link to='/serverDown' className="font-medium">Contect Us</Link>
         <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
       </aside>
       <nav>
