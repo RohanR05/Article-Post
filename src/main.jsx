@@ -10,12 +10,13 @@ import AuthProvider from "./Provider/AuthProvider";
 import PrivetRoute from "./Provider/PrivetRoute";
 import PostArticle from "./Pages/PostArticles/PostArticle";
 import AllArticles from "./Pages/AllArticles/AllArticles";
-import MyArticles from "./Pages/MyArticles/MyArticles";
+import MyArticle from "./Pages/MyArticles/MyArticles";
 import ArticleDetails from "./Pages/AllArticles/ArticleDetails";
 import UpdateArticle from "./Pages/MyArticles/UpdateArticle";
 import DetailsMyArticle from "./Pages/MyArticles/DetailsMyArticle";
 import NotFound from "./Components/NotFound";
 import CategoryArticles from "./Pages/CategoryCard";
+import Loading from "./Components/Loading";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,10 @@ const router = createBrowserRouter([
         index: true,
         Component: Home,
         loader: () =>
-          fetch("https://assignment11-server-side-lyart.vercel.app/articles"),
+          fetch("https://assignment11-server-side-lyart.vercel.app/articles", {
+            credentials: "include",
+          }).then((res) => res.json()),
+        hydrateFallbackElement: <Loading></Loading>,
       },
       {
         path: "signIn",
@@ -47,8 +51,11 @@ const router = createBrowserRouter([
       {
         path: "cardDetails/:id",
         loader: () =>
-          fetch("https://assignment11-server-side-lyart.vercel.app/articles"),
+          fetch("https://assignment11-server-side-lyart.vercel.app/articles", {
+            credentials: "include",
+          }),
         Component: ArticleDetails,
+        hydrateFallbackElement: <Loading></Loading>,
       },
       {
         path: "postArticles",
@@ -61,36 +68,48 @@ const router = createBrowserRouter([
       {
         path: "myArticles",
         loader: () =>
-          fetch(
-            "https://assignment11-server-side-lyart.vercel.app/articles"
-          ).then((res) => res.json()),
+          fetch("https://assignment11-server-side-lyart.vercel.app/articles", {
+            credentials: "include",
+          }).then((res) => res.json()),
         element: (
           <PrivetRoute>
-            <MyArticles></MyArticles>
+            <MyArticle></MyArticle>
           </PrivetRoute>
         ),
+        hydrateFallbackElement: <Loading></Loading>,
       },
       {
         path: "detailsMyArticle/:id",
         loader: ({ params }) =>
           fetch(
-            `https://assignment11-server-side-lyart.vercel.app/articles/${params.id}`
+            `https://assignment11-server-side-lyart.vercel.app/articles/${params.id}`,
+            {
+              credentials: "include",
+            }
           ),
         Component: DetailsMyArticle,
+        hydrateFallbackElement: <Loading></Loading>,
       },
       {
         path: "updateArticle/:id",
         loader: ({ params }) =>
           fetch(
-            `https://assignment11-server-side-lyart.vercel.app/articles/${params.id}`
+            `https://assignment11-server-side-lyart.vercel.app/articles/${params.id}`,
+            {
+              credentials: "include",
+            }
           ),
         Component: UpdateArticle,
+        hydrateFallbackElement: <Loading></Loading>,
       },
       {
         path: "category/:categoryName",
         loader: () =>
-          fetch("https://assignment11-server-side-lyart.vercel.app/articles"),
+          fetch("https://assignment11-server-side-lyart.vercel.app/articles", {
+            credentials: "include",
+          }),
         element: <CategoryArticles />,
+        hydrateFallbackElement: <Loading></Loading>,
       },
       {
         path: "*",

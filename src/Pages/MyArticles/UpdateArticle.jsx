@@ -4,7 +4,6 @@ import Swal from "sweetalert2";
 
 const UpdateArticle = () => {
   const user = useLoaderData();
-  console.log(user);
 
   const handlePostArticles = (e) => {
     e.preventDefault();
@@ -17,18 +16,14 @@ const UpdateArticle = () => {
       .map((tag) => tag.trim())
       .filter((tag) => tag.length > 0);
 
-    console.log(PostArticle);
 
-    fetch(
-      `https://assignment11-server-side-lyart.vercel.app/articles/${user._id}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(PostArticle),
-      }
-    )
+    fetch(`https://assignment11-server-side-lyart.vercel.app/articles/${user._id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(PostArticle),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
@@ -40,7 +35,7 @@ const UpdateArticle = () => {
             timer: 1500,
           });
           console.log(data, "after update");
-          form.reset()
+          form.reset();
         }
       });
   };

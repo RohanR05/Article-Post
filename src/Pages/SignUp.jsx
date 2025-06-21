@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
 
 const SignUp = () => {
-  const { createUser } = use(AuthContext);
+  const { createUser, setUser, updateUser } = use(AuthContext);
   const navigate = useNavigate();
 
   const handleSignUp = (e) => {
@@ -45,6 +45,23 @@ const SignUp = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result);
+        const user = result.user;
+        updateUser({ displayName: name, photoURL: photo })
+          .then(() => {
+            setUser({ ...user, displayName: name, photoURL: photo });
+          })
+          .catch((error) => {
+            console.log(error);
+            setUser(user);
+          });
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your Account is created",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -68,7 +85,9 @@ const SignUp = () => {
     <div className="card bg-cyan-50 w-full max-w-sm shrink-0 shadow-2xl shadow-cyan-700 mx-auto my-20  dark:bg-cyan-700 dark:text-cyan-50">
       <form onSubmit={handleSignUp} className="card-body text-cyan-700">
         <fieldset className="fieldset">
-          <h1 className="text-5xl font-bold  dark:bg-cyan-700 dark:text-cyan-50">Sign Up Now!</h1>
+          <h1 className="text-5xl font-bold  dark:bg-cyan-700 dark:text-cyan-50">
+            Sign Up Now!
+          </h1>
 
           <label className="label">Name</label>
           <input

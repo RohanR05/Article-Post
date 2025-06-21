@@ -3,7 +3,6 @@ import ArticleCard from "./ArticleCard";
 
 const AllArticleCard = ({ articlesPromise }) => {
   const article = use(articlesPromise);
-  console.log(article);
   return (
     <div className="m-3 ">
       <p className="text-center my-5 text-2xl font-medium bg-cyan-700 text-white ">All Articles are here!</p>

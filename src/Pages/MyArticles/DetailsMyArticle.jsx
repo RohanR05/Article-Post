@@ -3,7 +3,6 @@ import { useLoaderData } from 'react-router'
 
 const DetailsMyArticle = () => {
     const details = useLoaderData()
-    console.log(details)
  const {
     title,
     category,

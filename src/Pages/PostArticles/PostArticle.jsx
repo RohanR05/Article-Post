@@ -24,10 +24,11 @@ const PostArticle = () => {
       day: "numeric",
     });
 
-    console.log(PostArticle);
 
     axios
-      .post("https://assignment11-server-side-lyart.vercel.app/articles", PostArticle)
+      .post("https://assignment11-server-side-lyart.vercel.app/articles", PostArticle,{
+        withCredentials: true
+      })
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({

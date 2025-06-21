@@ -13,7 +13,6 @@ const SignIn = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
 
     singIn(email, password)
       .then((result) => {

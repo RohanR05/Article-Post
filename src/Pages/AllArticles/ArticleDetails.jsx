@@ -7,7 +7,6 @@ const ArticleDetails = () => {
   const data = useLoaderData();
   const { id } = useParams();
   const {user}=use(AuthContext)
-  console.log(data, id);
   const article = data.find((item) => item._id === id);
 
   return (
