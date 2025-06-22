@@ -32,6 +32,9 @@ const MyArticlesList = () => {
         fetch(
           `https://assignment11-server-side-lyart.vercel.app/articles/${id}`,
           {
+            credentials: "include",
+          },
+          {
             method: "DELETE",
           }
         )

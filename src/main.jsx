@@ -53,7 +53,7 @@ const router = createBrowserRouter([
         loader: () =>
           fetch("https://assignment11-server-side-lyart.vercel.app/articles", {
             credentials: "include",
-          }),
+          }).then((res) => res.json()),
         Component: ArticleDetails,
         hydrateFallbackElement: <Loading></Loading>,
       },

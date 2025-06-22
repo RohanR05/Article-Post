@@ -5,7 +5,6 @@ import { AuthContext } from "../Provider/AuthContext";
 const Home = () => {
   const article = useLoaderData();
   const { user } = use(AuthContext);
-  console.log(article);
 
   const categories = [...new Set(article.map((a) => a.category))];
 
@@ -43,10 +42,10 @@ const Home = () => {
               <h2 className="text-2xl font-semibold mb-4">Categories</h2>
               <div className="flex flex-wrap justify-center gap-4">
                 {categories.map((category, idx) => (
-                  <Link to={`category/${category}`}>
+                  <Link to={`category/${category}`} key={idx}>
                     {" "}
                     <button
-                      key={idx}
+                      
                       className="px-4 py-2 bg-cyan-100 text-cyan-800 rounded-full border border-cyan-300 hover:bg-cyan-200 dark:bg-cyan-700 dark:text-cyan-50 dark:border-cyan-500"
                     >
                       {category}

@@ -49,7 +49,9 @@ const AuthProvider = ({ children }) => {
         axios
           .post("https://assignment11-server-side-lyart.vercel.app/jwt", userData, {
             withCredentials: true,
-          })
+          }).catch((error) => {
+  console.log("JWT token error:", error.response?.data || error.message);
+})
           .then((res) => {
             console.log("token after jwt", res.data);
             // const token = res.data.token;

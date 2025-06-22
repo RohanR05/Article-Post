@@ -16,14 +16,17 @@ const UpdateArticle = () => {
       .map((tag) => tag.trim())
       .filter((tag) => tag.length > 0);
 
-
-    fetch(`https://assignment11-server-side-lyart.vercel.app/articles/${user._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(PostArticle),
-    })
+    fetch(
+      `https://assignment11-server-side-lyart.vercel.app/articles/${user._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(PostArticle),
+        credentials: "include",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
