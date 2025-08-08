@@ -1,12 +1,23 @@
-# React + Vite
+# 📝 Article Sharing Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-featured social platform where users can post, edit, and explore unique articles in real-time. Built using the MERN stack with secure authentication and a responsive UI.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔐 Firebase Authentication (Signup/Login)
+- 📝 Post, edit, and delete articles
+- 📚 Browse and read articles from others
+- 🗂️ MongoDB for scalable data storage
+- 🌐 RESTful APIs built with Node.js & Express
+- ⚛️ React frontend with Tailwind CSS for responsive design
+- ✨ Smooth animations with Framer Motion
+- 🔒 JWT-based secure route access
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend**: React, Tailwind CSS, Framer Motion
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **Authentication**: Firebase, JWT
+- **Version Control**: Git, GitHub
+
