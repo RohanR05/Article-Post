@@ -9,11 +9,11 @@ const CategoryArticles = () => {
 
   return (
     <div className="my-10 px-4">
-      <h2 className="text-3xl font-bold text-center mb-6 text-cyan-800 ">
+      <h2 className="text-3xl font-bold text-center mb-6 text-[#394a20] dark:bg-white">
         Articles in "{categoryName}"
       </h2>
       {filtered.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filtered.map((data, index) => (
             <HomeArticleCard key={index} data={data} />
           ))}

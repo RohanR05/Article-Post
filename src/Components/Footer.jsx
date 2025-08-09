@@ -6,11 +6,18 @@ const Footer = () => {
     <footer className="footer footer-horizontal footer-center p-10 bg-[#394a20] text-white">
       <aside>
         <a className="text-xl md:text-2xl font-medium">
-          <span className="text-cyan-700 font-bold dark:text-cyan-50">Next</span>Knowledge
+          <span className="text-cyan-700 font-bold dark:text-cyan-50">
+            Next
+          </span>
+          Knowledge
         </a>
         <ThemeToggle></ThemeToggle>
-        <Link to='/serverDown' className="font-medium">About Us</Link>
-        <Link to='/serverDown' className="font-medium">Contect Us</Link>
+        <Link to="/postAbout" className="font-medium">
+          About Us
+        </Link>
+        <Link to="/serverDown" className="font-medium">
+          Contect Us
+        </Link>
         <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
       </aside>
       <nav>

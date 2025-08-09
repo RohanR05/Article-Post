@@ -111,7 +111,7 @@ const Navbar = () => {
               <div className="flex gap-5 items-center">
                 <button
                   onClick={handleLogOut}
-                  className=" bg-white text-[#394a20] py-1 px-2 rounded-2xl font-medium hover:bg-[#93f500]"
+                  className=" bg-white text-[#394a20] py-1 px-2 rounded-2xl font-medium hover:opacity-80"
                 >
                   Log Out
                 </button>
