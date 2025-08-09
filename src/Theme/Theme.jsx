@@ -19,7 +19,7 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={() => setIsDark(!isDark)}
-      className="btn btn-sm bg-cyan-50 dark:bg-cyan-700 text-cyan-700 dark:text-cyan-50"
+      className="btn btn-sm dark:bg-[#394a20] dark:text-white text-[#394a20]"
     >
       {isDark ? "Light Mode" : "Dark Mode"}
     </button>

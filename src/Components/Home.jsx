@@ -11,7 +11,7 @@ const Home = () => {
   const categories = [...new Set(article.map((a) => a.category))];
 
   return (
-    <div>
+    <div className="text-[#394a20] dark:text-white">
       {/* <div
         className="hero"
         style={{
@@ -47,7 +47,7 @@ const Home = () => {
                 {categories.map((category, idx) => (
                   <Link to={`category/${category}`} key={idx}>
                     {" "}
-                    <button className="px-4 py-2 bg-cyan-100 text-cyan-800 rounded-full border border-cyan-300 hover:bg-cyan-200 dark:bg-cyan-700 dark:text-cyan-50 dark:border-cyan-500">
+                    <button className="px-4 py-2 bg-[#394a20] text-white rounded-full hover:bg-[#90b855]">
                       {category}
                     </button>
                   </Link>

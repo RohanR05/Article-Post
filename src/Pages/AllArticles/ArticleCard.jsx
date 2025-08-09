@@ -11,13 +11,13 @@ const ArticleCard = ({ data }) => {
   });
 
   return (
-    <div className="card bg-cyan-50 text-cyan-700 card-xl shadow-lg shadow-cyan-700 dark:bg-cyan-700 dark:text-cyan-50">
+    <div className="card bg-white text-[#394a20] card-xl shadow-lg shadow-[#394a20] dark:bg-[#394a20] dark:text-cyan-50">
       <div className="card-body">
         <h2 className="card-title">{author_name}</h2>
         <p>Title: {title}</p>
         <p>Published: {formattedDate}</p>
         <div className="justify-end card-actions">
-          <button className="btn text-cyan-50 bg-cyan-700"><Link to={`/cardDetails/${_id}`}>Read More</Link></button>
+          <button className="btn text-cyan-50 bg-[#394a20]"><Link to={`/cardDetails/${_id}`}>Read More</Link></button>
         </div>
       </div>
     </div>

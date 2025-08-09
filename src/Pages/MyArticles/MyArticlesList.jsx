@@ -57,15 +57,15 @@ const MyArticlesList = () => {
   };
 
   return (
-    <div className="p-4 dark:bg-cyan-700 dark:text-cyan-50">
+    <div className="p-4 dark:bg-[#394a20] dark:text-white">
       <h2 className="text-2xl font-bold mb-4 text-center">My Articles</h2>
 
       {myArticles.length === 0 ? (
         <p className="text-center">You have no articles created.</p>
       ) : (
         <div className="overflow-x-auto w-full">
-          <table className="table w-full min-w-[600px]">
-            <thead className="bg-cyan-100 text-cyan-800">
+          <table className="table w-full min-w-[600px] ">
+            <thead className="bg-[#394a2030] text-[#394a20] dark:bg-white">
               <tr>
                 <th>Name</th>
                 <th>Title</th>
@@ -77,7 +77,7 @@ const MyArticlesList = () => {
               {myArticles.map((item) => (
                 <tr
                   key={item._id}
-                  className="dark:bg-cyan-700 dark:text-cyan-50"
+                  className="dark:bg-[#394a20] dark:text-white"
                 >
                   <td>
                     <div className="flex items-center gap-3">

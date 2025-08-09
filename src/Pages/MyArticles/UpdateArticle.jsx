@@ -44,7 +44,7 @@ const UpdateArticle = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto mt-10 bg-cyan-50 text-cyan-700  shadow-xl shadow-cyan-700 rounded-lg p-6 dark:bg-cyan-700 dark:text-cyan-50">
+    <div className="max-w-xl mx-auto mt-10 bg-white text-[#394a20]  shadow-xl shadow-[#394a20] rounded-lg p-6 dark:bg-[#394a20] dark:text-white">
       <h2 className="text-3xl font-bold text-center mb-6">
         Edit Your Articles
       </h2>
@@ -55,7 +55,7 @@ const UpdateArticle = () => {
             name="title"
             defaultValue={user.title}
             placeholder="Enter title name"
-            className="input input-bordered w-full dark:bg-cyan-700"
+            className="input input-bordered w-full dark:bg-white dark:text-[#394a20]"
             required
           />
         </div>
@@ -65,7 +65,7 @@ const UpdateArticle = () => {
           <select
             name="category"
             defaultValue={user.category}
-            className="select select-bordered w-full dark:bg-cyan-700"
+            className="select select-bordered w-full dark:bg-white dark:text-[#394a20]"
             required
           >
             <option defaultValue={user.category}>Select a category</option>
@@ -87,7 +87,7 @@ const UpdateArticle = () => {
             name="content"
             defaultValue={user.content}
             placeholder="Describe your thoughts"
-            className="textarea textarea-bordered w-full dark:bg-cyan-700"
+            className="textarea textarea-bordered w-full dark:bg-white dark:text-[#394a20]"
             required
           />
         </div>
@@ -98,7 +98,7 @@ const UpdateArticle = () => {
             name="tags"
             type="text"
             defaultValue={user.tags}
-            className="input input-bordered w-full dark:bg-cyan-700"
+            className="input input-bordered w-full dark:bg-white dark:text-[#394a20]"
             required
             placeholder="Tags (Separeted by comma)"
           />
@@ -111,14 +111,14 @@ const UpdateArticle = () => {
             type="text"
             defaultValue={user.author_photo}
             placeholder="https://example.com/image.jpg"
-            className="input input-bordered w-full dark:bg-cyan-700"
+            className="input input-bordered w-full dark:bg-white dark:text-[#394a20]"
             required
           />
         </div>
 
         <button
           type="submit"
-          className="btn bg-cyan-700 text-white w-full mt-4"
+          className="btn bg-[#394a20] text-white w-full mt-4"
         >
           Post
         </button>

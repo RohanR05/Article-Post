@@ -47,7 +47,7 @@ const PostArticle = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto mt-10 bg-cyan-50 text-cyan-700  shadow-xl shadow-cyan-700 rounded-lg p-6 dark:bg-cyan-700 dark:text-cyan-50">
+    <div className="max-w-xl mx-auto mt-10 bg-white text-[#394a20]  shadow-xl shadow-[#394a20] rounded-lg p-6 dark:bg-[#394a20] dark:text-white">
       <h2 className="text-3xl font-bold text-center mb-6">Post Articles</h2>
       <form onSubmit={handlePostArticles} className="space-y-4">
         <div>
@@ -55,7 +55,7 @@ const PostArticle = () => {
           <input
             name="title"
             placeholder="Enter title name"
-            className="input input-bordered w-full dark:bg-cyan-700"
+            className="input input-bordered w-full dark:bg-[#394a20]"
             required
           />
         </div>
@@ -64,7 +64,7 @@ const PostArticle = () => {
           <label className="label">Category</label>
           <select
             name="category"
-            className="select select-bordered w-full dark:bg-cyan-700"
+            className="select select-bordered w-full dark:bg-[#394a20]"
             required
           >
             <option value="">Select a category</option>
@@ -85,7 +85,7 @@ const PostArticle = () => {
           <textarea
             name="content"
             placeholder="Describe your thoughts"
-            className="textarea textarea-bordered w-full dark:bg-cyan-700"
+            className="textarea textarea-bordered w-full dark:bg-[#394a20]"
             required
           />
         </div>
@@ -95,7 +95,7 @@ const PostArticle = () => {
           <input
             name="tags"
             type="text"
-            className="input input-bordered w-full dark:bg-cyan-700"
+            className="input input-bordered w-full dark:bg-[#394a20]"
             required
             placeholder="Tags (Separeted by comma)"
           />
@@ -107,7 +107,7 @@ const PostArticle = () => {
             name="author_photo"
             type="text"
             placeholder="https://example.com/image.jpg"
-            className="input input-bordered w-full dark:bg-cyan-700"
+            className="input input-bordered w-full dark:bg-[#394a20]"
             required
           />
         </div>
@@ -117,7 +117,7 @@ const PostArticle = () => {
           <input
             name="author_name"
             type="text"
-            className="input input-bordered w-full dark:bg-cyan-700"
+            className="input input-bordered w-full dark:bg-[#394a20]"
             value={user?.displayName || ""}
             readOnly
           />
@@ -128,7 +128,7 @@ const PostArticle = () => {
           <input
             name="email"
             type="email"
-            className="input input-bordered w-full dark:bg-cyan-700"
+            className="input input-bordered w-full dark:bg-[#394a20]"
             value={user?.email || ""}
             readOnly
           />
@@ -136,7 +136,7 @@ const PostArticle = () => {
 
         <button
           type="submit"
-          className="btn bg-cyan-700 text-white w-full mt-4"
+          className="btn bg-[#394a20] dark:bg-white dark:text-[#394a20] text-white w-full mt-4"
         >
           Create
         </button>

@@ -1,9 +1,9 @@
-import React from 'react'
-import { useLoaderData } from 'react-router'
+import React from "react";
+import { useLoaderData } from "react-router";
 
 const DetailsMyArticle = () => {
-    const details = useLoaderData()
- const {
+  const details = useLoaderData();
+  const {
     title,
     category,
     content,
@@ -15,7 +15,7 @@ const DetailsMyArticle = () => {
   } = details;
 
   return (
-    <div className="max-w-4xl mx-auto my-6 p-6 bg-cyan-50 text-cyan-700 dark:bg-cyan-700 dark:text-cyan-50 shadow-lg rounded-xl border border-gray-200">
+    <div className="max-w-4xl mx-auto my-6 p-6 bg-white text-[#394a20] dark:bg-[#394a20] dark:text-white shadow-lg rounded-xl border border-gray-200">
       <div className="flex items-center gap-4 mb-4 ">
         <img
           src={author_photo}
@@ -34,8 +34,11 @@ const DetailsMyArticle = () => {
         {publishedAt}
       </p>
 
-      <pre className="bg-gray-100 p-4  dark:bg-cyan-600 rounded-md text-sm overflow-x-auto ">
-        <code className='dark:text-cyan-50'>{content}</code>
+      <pre
+        className="bg-gray-100 p-4  dark:bg-white  dark:text-[#394a20]
+      rounded-md text-sm overflow-x-auto "
+      >
+        <code className="dark:text-[#394a20]">{content}</code>
       </pre>
 
       <div className="mt-4 flex flex-wrap gap-2">
@@ -52,5 +55,4 @@ const DetailsMyArticle = () => {
   );
 };
 
-
-export default DetailsMyArticle
+export default DetailsMyArticle;

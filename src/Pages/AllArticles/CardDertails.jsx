@@ -55,7 +55,7 @@ const CardDertails = ({ article, currentUser }) => {
   };
 
   return (
-    <div className=" max-w-screen-lg mx-auto bg-cyan-50  text-cyan-700 dark:bg-cyan-700 dark:text-cyan-50 shadow-lg rounded-lg overflow-hidden mt-10">
+    <div className=" max-w-screen-lg mx-auto bg-white text-[#394a20] dark:bg-[#394a20] dark:text-white shadow-lg rounded-lg overflow-hidden mt-10">
       <div className="flex justify-center mt-4">
         <img
           src={author_photo}
@@ -64,14 +64,14 @@ const CardDertails = ({ article, currentUser }) => {
         />
       </div>
       
-      <div className="p-6 dark:bg-cyan-700 dark:text-cyan-50">
+      <div className="p-6 dark:bg-[#394a20] dark:text-cyan-50">
         <h1 className="text-2xl font-bold mb-2">{title}</h1>
         <p className="text-sm text-gray-600 mb-4 dark:text-cyan-50">
           Category: <span className="font-medium">{category}</span> |{" "}
           {publishedAt}
         </p>
-        <pre className="bg-gray-100 p-4  dark:bg-cyan-600 rounded-md text-sm overflow-x-auto ">
-          <code className="dark:text-cyan-50">{content}</code>
+        <pre className="bg-gray-100 p-4  rounded-md text-sm overflow-x-auto ">
+          <code className="text-[#394a20]">{content}</code>
         </pre>
 
         <ul className="mb-4 text-gray-600 space-y-1 dark:text-cyan-50">
@@ -105,10 +105,10 @@ const CardDertails = ({ article, currentUser }) => {
         {/* Comment Input */}
         <form
           onSubmit={handleCommentSubmit}
-          className="mt-6 space-y-2 dark:bg-cyan-700 dark:text-cyan-50"
+          className="mt-6 space-y-2 dark:[#394a20]dark:text-cyan-50"
         >
           <textarea
-            className="w-full border border-cyan-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+            className="w-full border border-[#9bff04] rounded p-2 focus:outline-none focus:ring-2 focus:ring-cyan-500"
             placeholder="Write a comment..."
             value={comment}
             onChange={(e) => setComment(e.target.value)}

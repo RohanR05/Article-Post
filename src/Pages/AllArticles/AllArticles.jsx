@@ -9,7 +9,7 @@ const articlesPromise = fetch(
 
 const AllArticles = () => {
   return (
-    <div className="md:p-5 lg:p-10 dark:text-cyan-50">
+    <div className="md:p-5 lg:p-10 dark:text-white">
       <AllArticleCard articlesPromise={articlesPromise}></AllArticleCard>
     </div>
   );

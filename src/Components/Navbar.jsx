@@ -17,7 +17,7 @@ const Navbar = () => {
 
   const links = (
     <>
-      <li className="dark:text-cyan-50 dark:bg-cyan-700 text-[17px]">
+      <li className=" text-[17px]">
         <NavLink
           className={({ isActive }) => (isActive ? "underline" : "")}
           to={"/"}
@@ -25,7 +25,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li className="dark:text-cyan-50 dark:bg-cyan-700 text-[17px]">
+      <li className=" text-[17px]">
         <NavLink
           className={({ isActive }) => (isActive ? "underline" : "")}
           to={"/allArticles"}
@@ -33,7 +33,7 @@ const Navbar = () => {
           All Articles
         </NavLink>
       </li>
-      <li className="dark:text-cyan-50 dark:bg-cyan-700 text-[17px]">
+      <li className=" text-[17px]">
         <NavLink
           className={({ isActive }) => (isActive ? "underline" : "")}
           to={"/myArticles"}
@@ -41,7 +41,7 @@ const Navbar = () => {
           My Articles
         </NavLink>
       </li>
-      <li className="dark:text-cyan-50 dark:bg-cyan-700 text-[17px]">
+      <li className="text-[17px]">
         <NavLink
           className={({ isActive }) => (isActive ? "underline" : "")}
           to={"/postArticles"}
@@ -54,7 +54,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar light shadow-md shadow-[#00333b] dark:bg-cyan-700 dark:text-cyan-50">
+      <div className="navbar bg-[#394a20] text-white text-shadow-md shadow-[#00333b]">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -76,7 +76,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 text-[#00333b] rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content dark:bg-black dark:text-[#e2e9d7] bg-base-100 text-[#00333b] rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               {links}
             </ul>
