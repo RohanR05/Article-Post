@@ -54,7 +54,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar light shadow-sm dark:bg-cyan-700 dark:text-cyan-50">
+      <div className="navbar light shadow-md shadow-[#00333b] dark:bg-cyan-700 dark:text-cyan-50">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -82,7 +82,7 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to="/" className="text-xl md:text-2xl font-medium">
-            <span className="text-cyan-300 font-bold  dark:text-cyan-50">
+            <span className="text-cyan-500 font-bold  dark:text-cyan-50">
               Next
             </span>
             Knowledge

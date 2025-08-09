@@ -2,6 +2,8 @@ import React, { use } from "react";
 import { Link, useLoaderData } from "react-router";
 import HomeArticleCard from "./HomeArticleCard";
 import { AuthContext } from "../Provider/AuthContext";
+import img from "../assets/Green Minimalist Summer Big Sale Medium Banner.png";
+
 const Home = () => {
   const article = useLoaderData();
   const { user } = use(AuthContext);
@@ -10,7 +12,7 @@ const Home = () => {
 
   return (
     <div>
-      <div
+      {/* <div
         className="hero"
         style={{
           backgroundImage: "url(https://i.ibb.co/d0BknRC9/download.jpg)",
@@ -33,7 +35,8 @@ const Home = () => {
             </button>
           </div>
         </div>
-      </div>{" "}
+      </div>{" "} */}
+      <img src={img} />
       {user && (
         <>
           {" "}
@@ -44,10 +47,7 @@ const Home = () => {
                 {categories.map((category, idx) => (
                   <Link to={`category/${category}`} key={idx}>
                     {" "}
-                    <button
-                      
-                      className="px-4 py-2 bg-cyan-100 text-cyan-800 rounded-full border border-cyan-300 hover:bg-cyan-200 dark:bg-cyan-700 dark:text-cyan-50 dark:border-cyan-500"
-                    >
+                    <button className="px-4 py-2 bg-cyan-100 text-cyan-800 rounded-full border border-cyan-300 hover:bg-cyan-200 dark:bg-cyan-700 dark:text-cyan-50 dark:border-cyan-500">
                       {category}
                     </button>
                   </Link>
