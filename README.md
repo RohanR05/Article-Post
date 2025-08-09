@@ -1,12 +1,51 @@
-# React + Vite
+# 📝 Article Sharing Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack article sharing platform where users can write, edit, and explore articles in a modern, responsive web app. Built with the MERN stack and enhanced by Firebase authentication, secure JWT protection, and smooth user experience via React and Framer Motion.
 
-Currently, two official plugins are available:
+> 🔗 **Live Site**: [https://assignment-11-49577.web.app](https://assignment-11-49577.web.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🧰 Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend**: React.js, Tailwind CSS, DaisyUI, Framer Motion
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB (Mongoose)
+- **Authentication**: Firebase Auth + JWT
+- **API Communication**: Axios
+- **Data Fetching**: TanStack Query (React Query)
+
+---
+
+## ✨ Core Features
+
+- ✍️ Users can post, edit, and delete their own articles
+- 🔐 Firebase Authentication for secure login/register
+- 📚 Browse and read articles shared by others
+- 🔒 JWT-protected backend routes for user security
+- 📦 MongoDB stores article and user data efficiently
+- ⚛️ Framer Motion animations for engaging UX
+- ⚡ Optimized data fetching with TanStack Query
+- 📱 Fully responsive for desktop and mobile
+
+---
+
+## 📦 Dependencies
+
+```bash
+Frontend:
+- react
+- react-router-dom
+- axios
+- @tanstack/react-query
+- framer-motion
+- firebase
+- tailwindcss
+- daisyui
+
+Backend:
+- express
+- cors
+- dotenv
+- jsonwebtoken
+- mongoose
