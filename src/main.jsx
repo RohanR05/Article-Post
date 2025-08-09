@@ -17,6 +17,7 @@ import DetailsMyArticle from "./Pages/MyArticles/DetailsMyArticle";
 import NotFound from "./Components/NotFound";
 import CategoryArticles from "./Pages/CategoryCard";
 import Loading from "./Components/Loading";
+import About from "./Pages/About/About";
 
 const router = createBrowserRouter([
   {
@@ -110,6 +111,10 @@ const router = createBrowserRouter([
           }),
         element: <CategoryArticles />,
         hydrateFallbackElement: <Loading></Loading>,
+      },
+      {
+        path: "postAbout",
+        Component: About,
       },
       {
         path: "*",

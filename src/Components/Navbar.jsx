@@ -33,20 +33,33 @@ const Navbar = () => {
           All Articles
         </NavLink>
       </li>
-      <li className=" text-[17px]">
-        <NavLink
-          className={({ isActive }) => (isActive ? "underline" : "")}
-          to={"/myArticles"}
-        >
-          My Articles
-        </NavLink>
-      </li>
+      {user && (
+        <>
+          {" "}
+          <li className=" text-[17px]">
+            <NavLink
+              className={({ isActive }) => (isActive ? "underline" : "")}
+              to={"/myArticles"}
+            >
+              My Articles
+            </NavLink>
+          </li>
+          <li className="text-[17px]">
+            <NavLink
+              className={({ isActive }) => (isActive ? "underline" : "")}
+              to={"/postArticles"}
+            >
+              Post Article
+            </NavLink>
+          </li>
+        </>
+      )}
       <li className="text-[17px]">
         <NavLink
           className={({ isActive }) => (isActive ? "underline" : "")}
-          to={"/postArticles"}
+          to={"/postAbout"}
         >
-          Post Article
+          About
         </NavLink>
       </li>
     </>
@@ -54,7 +67,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar bg-[#394a20] text-white text-shadow-md shadow-[#00333b]">
+      <div className="navbar bg-[#394a20] text-white text-shadow-md shadow-[#394a20]">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -95,26 +108,18 @@ const Navbar = () => {
           <div className="">
             {" "}
             {user ? (
-              <div className="relative">
+              <div className="flex gap-5 items-center">
+                <button
+                  onClick={handleLogOut}
+                  className=" bg-white text-[#394a20] py-1 px-2 rounded-2xl font-medium hover:bg-[#93f500]"
+                >
+                  Log Out
+                </button>
                 <img
-                  className="w-12 h-12 rounded-2xl hover:opacity-100 cursor-pointer peer"
+                  className="w-12 h-12 rounded-2xl hidden md:block"
                   src={user?.photoURL || "https://via.placeholder.com/150"}
                   alt="Profile"
                 />
-                <div className="absolute right-0 top-14 bg-white dark:bg-cyan-700 text-black dark:text-white shadow-lg rounded-lg p-2 opacity-0 peer-hover:opacity-100 hover:opacity-100 transition-opacity z-10 min-w-[200px] pointer-events-none peer-hover:pointer-events-auto hover:pointer-events-auto">
-                  <p className="text-md font-semibold mb-2">
-                    Name: {user?.displayName || "User"}
-                  </p>
-                  <p className="text-md font-semibold mb-2">
-                    Email: {user?.email || "user"}
-                  </p>
-                  <button
-                    onClick={handleLogOut}
-                    className="bg-red-500 text-white px-3 py-1 rounded text-md hover:bg-[#f3f3e0] hover:text-red-500 w-full"
-                  >
-                    Log Out
-                  </button>
-                </div>
               </div>
             ) : (
               <NavLink
