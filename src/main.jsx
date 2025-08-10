@@ -43,11 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: "allArticles",
-        element: (
-          <PrivetRoute>
-            <AllArticles></AllArticles>
-          </PrivetRoute>
-        ),
+        element: <AllArticles></AllArticles>,
       },
       {
         path: "cardDetails/:id",

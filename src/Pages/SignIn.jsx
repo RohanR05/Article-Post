@@ -55,7 +55,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="card mx-auto my-20 bg-cyan-50 w-full max-w-sm shrink-0 shadow-xl shadow-cyan-700 text-cyan-700  dark:bg-cyan-700 dark:text-cyan-50">
+    <div className="card mx-auto my-20 bg-white w-full max-w-sm shrink-0 shadow-xl shadow-[#394a20] text-[#394a20]  dark:bg-[#394a20] dark:text-white">
       <form onSubmit={handleSignIn} className="card-body">
         <fieldset className="fieldset">
           <h1 className="text-5xl font-bold">Sign In now!</h1>
@@ -63,7 +63,7 @@ const SignIn = () => {
           <label className="label">Email</label>
           <input
             type="email"
-            className="input text-cyan-700"
+            className="input text-[#394a20]"
             placeholder="Email"
             name="email"
           />
@@ -71,7 +71,7 @@ const SignIn = () => {
           <label className="label">Password</label>
           <input
             type="password"
-            className="input text-cyan-700"
+            className="input text-[#394a20]"
             placeholder="Password"
             name="password"
           />
@@ -79,7 +79,7 @@ const SignIn = () => {
           <div>
             <a className="link link-hover">Forgot password?</a>
           </div>
-          <button className="btn btn-neutral bg-white border-cyan-700 text-cyan-700 mt-4">
+          <button className="btn btn-neutral bg-white border-[#394a20] text-[#394a20] mt-4">
             Sign In
           </button>
           <button

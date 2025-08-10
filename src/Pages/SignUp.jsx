@@ -82,17 +82,17 @@ const SignUp = () => {
   };
 
   return (
-    <div className="card bg-cyan-50 w-full max-w-sm shrink-0 shadow-2xl shadow-cyan-700 mx-auto my-20  dark:bg-cyan-700 dark:text-cyan-50">
-      <form onSubmit={handleSignUp} className="card-body text-cyan-700">
+    <div className="card bg-white w-full max-w-sm shrink-0 shadow-2xl shadow-[#394a20] mx-auto my-20  dark:bg-[#394a20] dark:text-white">
+      <form onSubmit={handleSignUp} className="card-body text-[#394a20]">
         <fieldset className="fieldset">
-          <h1 className="text-5xl font-bold  dark:bg-cyan-700 dark:text-cyan-50">
+          <h1 className="text-5xl font-bold dark:text-white">
             Sign Up Now!
           </h1>
 
           <label className="label">Name</label>
           <input
             type="text"
-            className="input text-cyan-700"
+            className="input text-[#394a20]"
             placeholder="Name"
             name="name"
           />
@@ -100,7 +100,7 @@ const SignUp = () => {
           <label className="label">Email</label>
           <input
             type="email"
-            className="input text-cyan-700"
+            className="input text-[#394a20]"
             placeholder="Email"
             name="email"
           />
@@ -108,7 +108,7 @@ const SignUp = () => {
           <label className="label">Photo</label>
           <input
             type="url"
-            className="input text-cyan-700"
+            className="input text-[#394a20]"
             placeholder="Photo URL"
             name="photo"
           />
@@ -116,12 +116,12 @@ const SignUp = () => {
           <label className="label">Password</label>
           <input
             type="password"
-            className="input text-cyan-700"
+            className="input text-[#394a20]"
             placeholder="Password"
             name="password"
           />
 
-          <button className="btn text-cyan-700 bg-white border-cyan-700 mt-4">
+          <button className="btn text-[#394a20] bg-white border-[#394a20] mt-4">
             Sign Up
           </button>
         </fieldset>
