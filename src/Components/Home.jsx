@@ -62,6 +62,7 @@ const Home = () => {
         <div
           style={{
             display: "flex",
+            flexWrap:'wrap',
             justifyContent: "center",
             gap: "60px",
             fontSize: "1.8rem",
