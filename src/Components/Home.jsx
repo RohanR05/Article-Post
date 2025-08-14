@@ -1,31 +1,50 @@
 import { Link, useLoaderData } from "react-router";
+import { motion } from "framer-motion";
 import HomeArticleCard from "./HomeArticleCard";
-import img from "../assets/Green Minimalist Summer Big Sale Medium Banner.png";
+import img from "../assets/Green Minimalist Summer Big Sale Medium Banner.jpg";
+import Features from "./Features";
 
 const Home = () => {
   const article = useLoaderData();
-
   const categories = [...new Set(article.map((a) => a.category))];
 
   return (
     <div className="text-[#394a20] dark:text-white pt-16">
-      <img src={img} />{" "}
-      <div>
-        <div className="my-16 text-center bg-white py-10">
-          <h2 className="text-2xl font-semibold mb-10">Categories</h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            {categories.map((category, idx) => (
-              <Link to={`category/${category}`} key={idx}>
-                {" "}
-                <button className="px-4 py-2 bg-[#394a20] text-white rounded-full hover:bg-[#90b855]">
-                  {category}
-                </button>
-              </Link>
-            ))}
-          </div>
+      {/* Banner */}
+      <motion.img
+        src={img}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.9}}
+      />
+
+      {/* Categories */}
+      <motion.div
+        className="my-16 text-center bg-white py-10"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.9 }}
+      >
+        <h2 className="text-2xl font-semibold mb-10">Categories</h2>
+        <div className="flex flex-wrap justify-center gap-4">
+          {categories.map((category, idx) => (
+            <Link to={`category/${category}`} key={idx}>
+              <button className="px-4 py-2 bg-[#394a20] text-white rounded-full hover:bg-[#90b855]">
+                {category}
+              </button>
+            </Link>
+          ))}
         </div>
-      </div>
-      <div>
+      </motion.div>
+
+      {/* Latest Articles */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.9 }}
+      >
         <h2 className="text-center my-4 text-2xl font-medium">
           Here are some latest Articles...
         </h2>
@@ -37,8 +56,13 @@ const Home = () => {
               <HomeArticleCard key={index} data={data} />
             ))}
         </div>
-      </div>
-      <div
+      </motion.div>
+
+      {/* Features Section */}
+      <Features />
+
+      {/* Website Statistics */}
+      <motion.div
         className="dark:bg-white dark:text-[#394a20] mt-16"
         style={{
           width: "100%",
@@ -49,20 +73,18 @@ const Home = () => {
           border: "10px solid #394a20",
           borderRadius: "16px",
         }}
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.9 }}
       >
-        <h1
-          style={{
-            fontSize: "2.5rem",
-            marginBottom: "20px",
-            color: "#394a20",
-          }}
-        >
+        <h1 style={{ fontSize: "2.5rem", marginBottom: "20px", color: "#394a20" }}>
           📊 Website Statistics
         </h1>
         <div
           style={{
             display: "flex",
-            flexWrap:'wrap',
+            flexWrap: "wrap",
             justifyContent: "center",
             gap: "60px",
             fontSize: "1.8rem",
@@ -74,8 +96,10 @@ const Home = () => {
           <div>👍 Total Likes: 256</div>
           <div>💬 Total Comments: 78</div>
         </div>
-      </div>
-      <div
+      </motion.div>
+
+      {/* Our Mission */}
+      <motion.div
         className="dark:text-white dark:bg-[#394a20]"
         style={{
           width: "100%",
@@ -87,17 +111,14 @@ const Home = () => {
           borderRadius: "16px",
           marginTop: "48px",
         }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.9 }}
       >
-        <h2
-          style={{
-            fontSize: "3rem",
-            marginBottom: "30px",
-            color: "#394a20",
-          }}
-        >
+        <h2 style={{ fontSize: "3rem", marginBottom: "30px", color: "#394a20" }}>
           💡 Our Mission
         </h2>
-
         <p
           style={{
             fontSize: "2rem",
@@ -107,10 +128,8 @@ const Home = () => {
             color: "#394a20",
           }}
         >
-          “Empowering voices, protecting privacy, and connecting communities —
-          one thoughtful article at a time.”
+          “Empowering voices, protecting privacy, and connecting communities — one thoughtful article at a time.”
         </p>
-
         <p
           style={{
             fontSize: "1.5rem",
@@ -120,10 +139,8 @@ const Home = () => {
             color: "#394a20",
           }}
         >
-          Built with Node.js, React, MongoDB, Tailwind CSS, DaisyUI, JavaScript,
-          Firebase, and JWT for a safe and modern social platform.
+          Built with Node.js, React, MongoDB, Tailwind CSS, DaisyUI, JavaScript, Firebase, and JWT for a safe and modern social platform.
         </p>
-
         <div
           style={{
             display: "flex",
@@ -144,7 +161,7 @@ const Home = () => {
           <span>🔥 Firebase</span>
           <span>🔑 JWT Security</span>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
