@@ -1,29 +1,44 @@
-import { useEffect, useState } from "react";
 
-const ThemeToggle = () => {
-  const [isDark, setIsDark] = useState(() => {
-    return localStorage.getItem("theme") === "dark";
-  });
+import { useEffect, useState } from "react";
+import { Moon, Sun } from "lucide-react";
+
+export default function ThemeToggle() {
+  const [theme, setTheme] = useState("light"); // plain JS
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const root = document.documentElement;
-    if (isDark) {
-      root.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      root.classList.remove("dark");
-      localStorage.setItem("theme", "light");
+    setMounted(true);
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light" || savedTheme === "dark") {
+      setTheme(savedTheme);
+      document.documentElement.setAttribute("data-theme", savedTheme);
     }
-  }, [isDark]);
+  }, []);
+
+  useEffect(() => {
+    if (mounted) {
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
+    }
+  }, [theme, mounted]);
+
+  const toggleTheme = () => {
+    setTheme(prev => (prev === "light" ? "dark" : "light"));
+  };
+
+  if (!mounted) return null;
 
   return (
     <button
-      onClick={() => setIsDark(!isDark)}
-      className="btn btn-sm dark:bg-[#394a20] dark:text-white text-[#394a20]"
+      onClick={toggleTheme}
+      className="btn btn-ghost btn-circle"
+      aria-label="Toggle Theme"
     >
-      {isDark ? "Light Mode" : "Dark Mode"}
+      {theme === "light" ? (
+        <Moon className="w-5 h-5 text-primary" />
+      ) : (
+        <Sun className="w-5 h-5 text-yellow-400" />
+      )}
     </button>
   );
-};
-
-export default ThemeToggle;
+}

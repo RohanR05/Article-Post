@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import ThemeToggle from "../Theme/Theme";
+// import ThemeToggle from "../Theme/Theme";
 
 const Footer = () => {
   return (
@@ -11,7 +11,7 @@ const Footer = () => {
           </span>
           Knowledge
         </a>
-        <ThemeToggle></ThemeToggle>
+        {/* <ThemeToggle></ThemeToggle> */}
         <Link to="/postAbout" className="font-medium">
           About Us
         </Link>

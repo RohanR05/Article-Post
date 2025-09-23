@@ -8,7 +8,19 @@ html {
   font-family: "Poppins", sans-serif;
 }
 
-.light{
-  color:#394aaa;
-  background: #ffffff ;
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #127957;
+  --color-secondary: #ffa621;
+  --color-accent:#eeeeee;
+  --color-neutral: "#ffffff";
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  --color-primary: #22c55e;   /* green-500 */
+  --color-secondary: #facc15; /* yellow-400 */
+  --color-accent: #1e293b;    /* slate-800 */
+  --color-neutral: #000000;   /* slate-900 */
 }

@@ -1,6 +1,7 @@
 import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
+import ThemeToggle from "../Theme/Theme";
 
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
@@ -105,6 +106,7 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1 ">{links}</ul>
         </div>
         <div className="navbar-end">
+          <ThemeToggle></ThemeToggle>
           <div className="">
             {" "}
             {user ? (
