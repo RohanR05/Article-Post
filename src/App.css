@@ -12,8 +12,8 @@ html {
   name: "light";
   default: true;
   --color-primary: #4b7ceb;
-  --color-secondary: #4b7ceb;
-  --color-accent:#eeeeee;
+  --color-secondary: #fa7aac;
+  --color-accent:#f5f1e1;
   --color-neutral: "#ffffff";
 }
 
