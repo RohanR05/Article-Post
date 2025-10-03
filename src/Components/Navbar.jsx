@@ -68,7 +68,7 @@ const Navbar = () => {
 
   return (
     <div class="relative z-50">
-      <div className="navbar bg-primary text-secondary text-shadow-md shadow-[#394a20] fixed top-0 right-0 left-0">
+      <div className="navbar bg-accent text-primary text-shadow-md shadow-[#394a20] fixed top-0 right-0 left-0">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
