@@ -111,10 +111,7 @@ const Navbar = () => {
             {" "}
             {user ? (
               <div className="flex gap-5 items-center">
-                <button
-                  onClick={handleLogOut}
-                  className=" bg-white text-[#394a20] py-1 px-2 rounded-2xl font-medium hover:opacity-80"
-                >
+                <button onClick={handleLogOut} className=" btn btn-secondary btn-outline">
                   Log Out
                 </button>
                 <img

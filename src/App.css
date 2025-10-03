@@ -14,7 +14,8 @@ html {
   --color-primary: #4b7ceb;
   --color-secondary: #fa7aac;
   --color-accent:#f5f1e1;
-  --color-neutral: "#ffffff";
+  --color-neutral: "#2e2e2e";
+  --color-info:"#ffba51"
 }
 
 @plugin "daisyui/theme" {
