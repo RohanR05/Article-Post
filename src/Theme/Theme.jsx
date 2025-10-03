@@ -31,13 +31,13 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="btn btn-ghost btn-circle"
+      className="btn btn-secondary btn-circle"
       aria-label="Toggle Theme"
     >
       {theme === "light" ? (
-        <Moon className="w-5 h-5 text-primary" />
+        <Moon className="w-5 h-5 " />
       ) : (
-        <Sun className="w-5 h-5 text-yellow-400" />
+        <Sun className="w-5 h-5" />
       )}
     </button>
   );

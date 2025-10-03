@@ -1,5 +1,4 @@
 import { useLoaderData, useParams } from "react-router";
-import HomeArticleCard from "../Components/HomeArticleCard";
 
 const CategoryArticles = () => {
   const articles = useLoaderData();

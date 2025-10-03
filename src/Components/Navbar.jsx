@@ -68,7 +68,7 @@ const Navbar = () => {
 
   return (
     <div class="relative z-50">
-      <div className="navbar bg-accent text-primary text-shadow-md shadow-[#394a20] fixed top-0 right-0 left-0">
+      <div className="navbar bg-accent text-primary font-semibold fixed top-0 right-0 left-0">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -111,7 +111,10 @@ const Navbar = () => {
             {" "}
             {user ? (
               <div className="flex gap-5 items-center">
-                <button onClick={handleLogOut} className=" btn btn-secondary btn-outline">
+                <button
+                  onClick={handleLogOut}
+                  className=" btn btn-secondary btn-outline"
+                >
                   Log Out
                 </button>
                 <img

@@ -3,9 +3,6 @@ import { createRoot } from "react-dom/client";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Root from "./MainLayout/Root";
-import Home from "./Components/Home";
-import SignIn from "./Pages/SignIn";
-import SignUp from "./Pages/SignUp";
 import AuthProvider from "./Provider/AuthProvider";
 import PrivetRoute from "./Provider/PrivetRoute";
 import PostArticle from "./Pages/PostArticles/PostArticle";
@@ -15,9 +12,12 @@ import ArticleDetails from "./Pages/AllArticles/ArticleDetails";
 import UpdateArticle from "./Pages/MyArticles/UpdateArticle";
 import DetailsMyArticle from "./Pages/MyArticles/DetailsMyArticle";
 import NotFound from "./Components/NotFound";
-import CategoryArticles from "./Pages/CategoryCard";
 import Loading from "./Components/Loading";
 import About from "./Pages/About/About";
+import Home from "./Pages/Homee/Home";
+import SignIn from "./Components/SignIn";
+import SignUp from "./Components/SignUp";
+import CategoryArticles from "./Pages/Homee/Categories/CategoryCard";
 
 const router = createBrowserRouter([
   {
