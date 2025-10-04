@@ -31,7 +31,7 @@ const Categories = () => {
           >
             <Link to={`category/${category}`}>
               <div
-                className="rounded-xl shadow-lg shadow-secondary/30 p-6 text-primary text-center cursor-pointer 
+                className="rounded-xl shadow-lg shadow-info/30 p-6 text-primary text-center cursor-pointer 
                 bg-accent hover:scale-110 hover:shadow-2xl  transition-all duration-300"
               >
                 <span className="block text-xl font-medium">{category}</span>

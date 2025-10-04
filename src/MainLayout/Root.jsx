@@ -4,7 +4,7 @@ import { Outlet } from "react-router";
 
 const Root = () => {
   return (
-    <div className="">
+    <div className="bg-neutral">
       {" "}
       <Navbar></Navbar>
       <div className="max-w-screen-xl mx-auto m-16">
