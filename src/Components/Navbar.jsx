@@ -2,6 +2,7 @@ import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
 import ThemeToggle from "../Theme/Theme";
+import Logo from "./Logo";
 
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
@@ -95,12 +96,7 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <Link to="/" className="text-xl md:text-2xl font-medium">
-            <span className="text-cyan-500 font-bold  dark:text-cyan-50">
-              Next
-            </span>
-            Knowledge
-          </Link>
+          <Logo></Logo>
         </div>
         <div className="navbar-center hidden lg:flex ">
           <ul className="menu menu-horizontal px-1 ">{links}</ul>
