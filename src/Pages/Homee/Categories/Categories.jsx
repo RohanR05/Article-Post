@@ -15,11 +15,11 @@ const Categories = () => {
         transition={{ duration: 0.6 }}
         className="text-3xl md:text-4xl font-bold text-center mb-10 text-primary"
       >
-        Explore <span className="text-secondary"> Categories</span>
+        Explore <span className="text-secondary">Categories</span>
       </motion.h2>
 
       {/* Category Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6  mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mx-auto">
         {categories.map((category, idx) => (
           <motion.div
             key={idx}
@@ -31,8 +31,9 @@ const Categories = () => {
           >
             <Link to={`category/${category}`}>
               <div
-                className="rounded-xl shadow-lg shadow-info/30 p-6 text-primary text-center cursor-pointer 
-                bg-accent hover:scale-110 hover:shadow-2xl  transition-all duration-300"
+                className="rounded-xl shadow-lg shadow-info/30 p-6 max-w-sm mx-auto text-primary 
+                text-center cursor-pointer bg-accent hover:scale-110 hover:shadow-xl 
+                transition-all duration-300 ease-in-out"
               >
                 <span className="block text-xl font-medium">{category}</span>
               </div>
