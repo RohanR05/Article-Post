@@ -93,7 +93,7 @@ const Features = () => {
                     boxShadow: "0 6px 18px rgba(0,0,0,0.08)",
                   }}
                 >
-                  <Icon className="h-8 w-8 text-white" />
+                  <Icon className="h-8 w-8 text-accent" />
                 </motion.div>
 
                 <h3 className="text-lg font-semibold text-primary dark:text-white mb-2">

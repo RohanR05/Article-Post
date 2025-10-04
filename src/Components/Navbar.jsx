@@ -68,7 +68,7 @@ const Navbar = () => {
   );
 
   return (
-    <div class="relative z-50">
+    <div className="relative z-50">
       <div className="navbar bg-accent text-primary font-semibold fixed top-0 right-0 left-0">
         <div className="navbar-start">
           <div className="dropdown">
