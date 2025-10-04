@@ -1,49 +1,110 @@
 import React from "react";
-import { PencilSquareIcon, PhotoIcon, TagIcon, ShieldCheckIcon } from "@heroicons/react/24/solid";
+import { motion } from "framer-motion";
+import {
+  PencilSquareIcon,
+  PhotoIcon,
+  TagIcon,
+  ShieldCheckIcon,
+} from "@heroicons/react/24/solid";
 
 const Features = () => {
   const features = [
     {
       title: "Post Your Own Articles",
-      description: "Write and share your thoughts with the world through our easy-to-use posting system.",
+      description:
+        "Write and share your thoughts with the world through our easy-to-use posting system.",
       icon: PencilSquareIcon,
+      // uses your CSS variables: --color-primary and --color-secondary
+      gradient:
+        "linear-gradient(90deg, var(--color-primary), var(--color-secondary))",
     },
     {
       title: "Add Images to Your Articles",
-      description: "Make your content visually appealing by attaching images to your posts.",
+      description:
+        "Make your content visually appealing by attaching images to your posts.",
       icon: PhotoIcon,
+      gradient:
+        "linear-gradient(90deg, var(--color-secondary), var(--color-info))",
     },
     {
       title: "Use Tags for Better Reach",
-      description: "Add tags to help readers find and explore your articles based on topics they love.",
+      description:
+        "Add tags to help readers find and explore your articles based on topics they love.",
       icon: TagIcon,
+      gradient:
+        "linear-gradient(90deg, var(--color-primary), var(--color-accent))",
     },
     {
       title: "Secure Authentication",
-      description: "Enjoy a safe and secure experience with Firebase Authentication and JWT protection.",
+      description:
+        "Enjoy a safe and secure experience with Firebase Authentication and JWT protection.",
       icon: ShieldCheckIcon,
+      gradient:
+        "linear-gradient(90deg, var(--color-secondary), var(--color-primary))",
     },
   ];
 
   return (
-    <section className="bg-gray-50 py-12">
-      <div className="max-w-6xl mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6">Platform Features</h2>
-        <p className="text-gray-600 mb-12">
-          Everything you need to share your ideas and connect with readers.
-        </p>
+    <section className="py-8 md:py-12">
+      <div className="max-w-7xl mx-auto px-6 text-center">
+        {/* Section Header */}
+        <motion.h2
+          initial={{ opacity: 0, y: -24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-4xl font-bold text-primary dark:text-primary mb-4"
+        >
+          Platform Features
+        </motion.h2>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="bg-white shadow-lg rounded-xl p-6 hover:shadow-xl transition"
-            >
-              <feature.icon className="h-10 w-10 text-blue-500 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-              <p className="text-gray-600">{feature.description}</p>
-            </div>
-          ))}
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.12 }}
+          viewport={{ once: true }}
+          className="text-sm md:text-base text-secondary dark:text-gray-300 mb-12 max-w-2xl mx-auto"
+        >
+          Everything you need to share your ideas and connect with readers.
+        </motion.p>
+
+        {/* Features Grid */}
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.92, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.55, delay: index * 0.12 }}
+                viewport={{ once: true }}
+                className="rounded-2xl shadow-lg p-6 transform transition hover:-translate-y-2 hover:shadow-2xl"
+                style={{
+                  background: "var(--color-accent)", // card background from your theme
+                }}
+              >
+                <motion.div
+                  whileHover={{ scale: 1.08 }}
+                  className="w-16 h-16 mx-auto mb-4 rounded-xl flex items-center justify-center"
+                  style={{
+                    // use the gradient defined per feature that references your CSS variables
+                    background: feature.gradient,
+                    boxShadow: "0 6px 18px rgba(0,0,0,0.08)",
+                  }}
+                >
+                  <Icon className="h-8 w-8 text-white" />
+                </motion.div>
+
+                <h3 className="text-lg font-semibold text-primary dark:text-white mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-sm text-secondary dark:text-gray-300">
+                  {feature.description}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
