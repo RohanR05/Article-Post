@@ -7,7 +7,7 @@ import Mission from "./Mission/Mission";
 
 const Home = () => {
   return (
-    <div className="">
+    <div className="py-8 md:py-10">
       {/* Banner */}
       <Banner></Banner>
 
