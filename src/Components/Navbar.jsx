@@ -27,7 +27,7 @@ const Navbar = () => {
     <>
       <li className="text-primary font-bold flex items-center gap-2">
         <NavLink
-          to="/"
+          to={"/"}
           className={({ isActive }) =>
             `flex items-center gap-2 transition ${isActive ? "underline" : ""}`
           }
@@ -80,8 +80,6 @@ const Navbar = () => {
           </li>
         </>
       )}
-
- 
     </>
   );
 
