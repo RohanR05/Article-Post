@@ -29,9 +29,7 @@ const Navbar = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `flex items-center gap-2 transition ${
-              isActive ? "underline" : ""
-            }`
+            `flex items-center gap-2 transition ${isActive ? "underline" : ""}`
           }
         >
           <FontAwesomeIcon icon={faHouse} className="text-secondary" />
@@ -43,9 +41,7 @@ const Navbar = () => {
         <NavLink
           to="/allArticles"
           className={({ isActive }) =>
-            `flex items-center gap-2 transition ${
-              isActive ? "underline" : ""
-            }`
+            `flex items-center gap-2 transition ${isActive ? "underline" : ""}`
           }
         >
           <FontAwesomeIcon icon={faNewspaper} className="text-secondary" />
@@ -85,19 +81,7 @@ const Navbar = () => {
         </>
       )}
 
-      <li className="text-primary font-bold flex items-center gap-2">
-        <NavLink
-          to="/postAbout"
-          className={({ isActive }) =>
-            `flex items-center gap-2 transition ${
-              isActive ? "underline" : ""
-            }`
-          }
-        >
-          <FontAwesomeIcon icon={faCircleInfo} className="text-secondary" />
-          About
-        </NavLink>
-      </li>
+ 
     </>
   );
 
@@ -126,7 +110,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-neutral flex flex-col items-start rounded-box mt-3 w-52 p-2 shadow"
             >
               {links}
             </ul>
@@ -150,10 +134,7 @@ const Navbar = () => {
                 onClick={handleLogOut}
                 className="btn btn-outline btn-secondary"
               >
-                <FontAwesomeIcon
-                  icon={faRightFromBracket}
-                  className="mr-2"
-                />
+                <FontAwesomeIcon icon={faRightFromBracket} className="mr-2" />
                 Log Out
               </button>
               <img

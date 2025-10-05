@@ -13,15 +13,16 @@ import {
   faMapLocationDot,
   faBoxOpen,
   faHouse,
+  faCircleInfo,
+  faSquarePlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router";
 import Logo from "./Logo";
 
 const Footer = () => {
-
   return (
     <footer className="bg-accent">
-      <div className="max-w-screen-xl mx-auto p-6 md:p-12 rounded mt-16">
+      <div className="max-w-screen-xl mx-auto p-6 md:p-12 rounded mt-6">
         {/* Upper Section */}
         <div className="w-full flex flex-col md:flex-row md:items-start md:justify-between gap-6 md:gap-10">
           {/* Brand + Social Icons */}
@@ -79,26 +80,34 @@ const Footer = () => {
               </li>{" "}
               <li className="text-primary font-bold flex items-center gap-2">
                 <NavLink
-                  className={({ isActive }) => (isActive ? "underline" : "")}
-                  to={"/coverage"}
+                  to="/postAbout"
+                  className={({ isActive }) =>
+                    `flex items-center gap-2 transition ${
+                      isActive ? "underline" : ""
+                    }`
+                  }
                 >
                   <FontAwesomeIcon
+                    icon={faCircleInfo}
                     className="text-secondary"
-                    icon={faMapLocationDot}
-                  />{" "}
-                  Coverage
+                  />
+                  About
                 </NavLink>
               </li>
               <li className="text-primary font-bold flex items-center gap-2">
                 <NavLink
-                  className={({ isActive }) => (isActive ? "underline" : "")}
-                  to={"/sendParcel"}
+                  to="/postArticles"
+                  className={({ isActive }) =>
+                    `flex items-center gap-2 transition ${
+                      isActive ? "underline" : ""
+                    }`
+                  }
                 >
                   <FontAwesomeIcon
+                    icon={faSquarePlus}
                     className="text-secondary"
-                    icon={faBoxOpen}
-                  />{" "}
-                  Send Parcel
+                  />
+                  Post Article
                 </NavLink>
               </li>
             </ul>
