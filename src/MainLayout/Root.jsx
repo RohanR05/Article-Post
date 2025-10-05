@@ -7,7 +7,8 @@ const Root = () => {
     <div className="bg-neutral">
       {" "}
       <Navbar></Navbar>
-      <div className="max-w-screen-xl mx-auto m-16">
+      <div className="max-w-screen-xl mx-auto mt-16">
+
         <Outlet></Outlet>
       </div>{" "}
       <Footer></Footer>

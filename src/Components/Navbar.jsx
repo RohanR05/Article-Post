@@ -1,66 +1,100 @@
-import React, { use } from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
 import ThemeToggle from "../Theme/Theme";
 import Logo from "./Logo";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHouse,
+  faNewspaper,
+  faPenNib,
+  faSquarePlus,
+  faCircleInfo,
+  faRightFromBracket,
+  faRightToBracket,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
-  const { user, logOut } = use(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {
-        alert("You Logged Out Successfully");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      .then(() => alert("You Logged Out Successfully"))
+      .catch((error) => console.log(error));
   };
 
   const links = (
     <>
-      <li className=" text-[17px]">
+      <li className="text-primary font-bold flex items-center gap-2">
         <NavLink
-          className={({ isActive }) => (isActive ? "underline" : "")}
-          to={"/"}
+          to="/"
+          className={({ isActive }) =>
+            `flex items-center gap-2 transition ${
+              isActive ? "underline" : ""
+            }`
+          }
         >
+          <FontAwesomeIcon icon={faHouse} className="text-secondary" />
           Home
         </NavLink>
       </li>
-      <li className=" text-[17px]">
+
+      <li className="text-primary font-bold flex items-center gap-2">
         <NavLink
-          className={({ isActive }) => (isActive ? "underline" : "")}
-          to={"/allArticles"}
+          to="/allArticles"
+          className={({ isActive }) =>
+            `flex items-center gap-2 transition ${
+              isActive ? "underline" : ""
+            }`
+          }
         >
+          <FontAwesomeIcon icon={faNewspaper} className="text-secondary" />
           All Articles
         </NavLink>
       </li>
+
       {user && (
         <>
-          {" "}
-          <li className=" text-[17px]">
+          <li className="text-primary font-bold flex items-center gap-2">
             <NavLink
-              className={({ isActive }) => (isActive ? "underline" : "")}
-              to={"/myArticles"}
+              to="/myArticles"
+              className={({ isActive }) =>
+                `flex items-center gap-2 transition ${
+                  isActive ? "underline" : ""
+                }`
+              }
             >
+              <FontAwesomeIcon icon={faPenNib} className="text-secondary" />
               My Articles
             </NavLink>
           </li>
-          <li className="text-[17px]">
+
+          <li className="text-primary font-bold flex items-center gap-2">
             <NavLink
-              className={({ isActive }) => (isActive ? "underline" : "")}
-              to={"/postArticles"}
+              to="/postArticles"
+              className={({ isActive }) =>
+                `flex items-center gap-2 transition ${
+                  isActive ? "underline" : ""
+                }`
+              }
             >
+              <FontAwesomeIcon icon={faSquarePlus} className="text-secondary" />
               Post Article
             </NavLink>
           </li>
         </>
       )}
-      <li className="text-[17px]">
+
+      <li className="text-primary font-bold flex items-center gap-2">
         <NavLink
-          className={({ isActive }) => (isActive ? "underline" : "")}
-          to={"/postAbout"}
+          to="/postAbout"
+          className={({ isActive }) =>
+            `flex items-center gap-2 transition ${
+              isActive ? "underline" : ""
+            }`
+          }
         >
+          <FontAwesomeIcon icon={faCircleInfo} className="text-secondary" />
           About
         </NavLink>
       </li>
@@ -69,69 +103,78 @@ const Navbar = () => {
 
   return (
     <div className="relative z-50">
-      <div className="navbar bg-accent text-primary font-semibold fixed top-0 right-0 left-0">
+      <div className="navbar fixed top-0 right-0 left-0 bg-base-100/50 backdrop-blur-md text-primary font-semibold shadow-md">
+        {/* Navbar Start */}
         <div className="navbar-start">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
+          {/* Dropdown for Mobile */}
+          <div className="dropdown md:hidden">
+            <div tabIndex={0} role="button" className="btn btn-ghost">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                {" "}
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />{" "}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content dark:bg-black dark:text-[#e2e9d7] bg-base-100 text-[#00333b] rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow"
             >
               {links}
             </ul>
           </div>
-          <Logo></Logo>
+
+          <Logo />
         </div>
-        <div className="navbar-center hidden lg:flex ">
-          <ul className="menu menu-horizontal px-1 ">{links}</ul>
+
+        {/* Navbar Center */}
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1 gap-2">{links}</ul>
         </div>
-        <div className="navbar-end">
-          <ThemeToggle></ThemeToggle>
-          <div className="">
-            {" "}
-            {user ? (
-              <div className="flex gap-5 items-center">
-                <button
-                  onClick={handleLogOut}
-                  className=" btn btn-secondary btn-outline"
-                >
-                  Log Out
-                </button>
-                <img
-                  className="w-12 h-12 rounded-2xl hidden md:block"
-                  src={user?.photoURL || "https://via.placeholder.com/150"}
-                  alt="Profile"
-                />
-              </div>
-            ) : (
-              <NavLink
-                to="/signIn"
-                className={({ isActive }) =>
-                  `btn btn-sm text-lg border-cyan-700 ${
-                    isActive ? "bg-cyan-700 text-white" : "text-cyan-700"
-                  }`
-                }
+
+        {/* Navbar End */}
+        <div className="navbar-end flex items-center gap-3">
+          <ThemeToggle />
+
+          {user ? (
+            <div className="flex gap-3 items-center">
+              <button
+                onClick={handleLogOut}
+                className="btn btn-outline btn-secondary"
               >
-                Sign In
-              </NavLink>
-            )}
-          </div>
+                <FontAwesomeIcon
+                  icon={faRightFromBracket}
+                  className="mr-2"
+                />
+                Log Out
+              </button>
+              <img
+                className="w-11 h-11 rounded-2xl hidden md:block"
+                src={user?.photoURL || "https://via.placeholder.com/150"}
+                alt="Profile"
+              />
+            </div>
+          ) : (
+            <NavLink
+              to="/signIn"
+              className={({ isActive }) =>
+                `btn btn-outline btn-secondary ${
+                  isActive ? "bg-secondary text-base-100" : ""
+                }`
+              }
+            >
+              <FontAwesomeIcon icon={faRightToBracket} className="mr-2" />
+              Sign In
+            </NavLink>
+          )}
         </div>
       </div>
     </div>
