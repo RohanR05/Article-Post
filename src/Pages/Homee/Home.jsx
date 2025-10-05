@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import Features from "./HomeSections/Features";
 import Banner from "./Banner/Banner";
 import Categories from "./Categories/Categories";
 import LatestPost from "./LatestPost/LatestPost";
 import Stats from "./Stats/Stats";
 import Mission from "./Mission/Mission";
+import Loading from "../../Components/Loading"; // adjust path if needed
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -12,6 +14,18 @@ const sectionVariants = {
 };
 
 const Home = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading delay or wait for data fetching
+    const timer = setTimeout(() => setLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <div className="py-8 md:py-10">
       {/* Banner */}
