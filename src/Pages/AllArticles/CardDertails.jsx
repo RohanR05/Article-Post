@@ -8,7 +8,6 @@ import {
   faTag,
   faCalendarDays,
 } from "@fortawesome/free-solid-svg-icons";
-import { AuthContext } from "../../Provider/AuthContext";
 
 const CardDertails = ({ article, currentUser }) => {
   const {

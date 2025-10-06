@@ -2,6 +2,7 @@ import React, { use } from "react";
 import { useLoaderData, useParams } from "react-router";
 import { AuthContext } from "../../Provider/AuthContext";
 import CardDertails from "./CardDertails";
+import Loading from "../../Components/Loading";
 
 const ArticleDetails = () => {
   const data = useLoaderData();
@@ -10,9 +11,7 @@ const ArticleDetails = () => {
 
   if (!data) {
     return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <span className="loading loading-spinner text-primary loading-lg"></span>
-      </div>
+        <Loading></Loading>
     );
   }
 
@@ -28,7 +27,8 @@ const ArticleDetails = () => {
             Article Not Found 😕
           </h2>
           <p className="text-base opacity-80">
-            The article you’re looking for doesn’t exist or may have been removed.
+            The article you’re looking for doesn’t exist or may have been
+            removed.
           </p>
         </div>
       )}
