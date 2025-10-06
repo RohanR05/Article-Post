@@ -1,5 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { FcLike } from "react-icons/fc";
+import React, { useEffect, useState, useContext } from "react";
+import { motion } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHeart,
+  faCommentDots,
+  faUser,
+  faTag,
+  faCalendarDays,
+} from "@fortawesome/free-solid-svg-icons";
+import { AuthContext } from "../../Provider/AuthContext";
 
 const CardDertails = ({ article, currentUser }) => {
   const {
@@ -34,7 +43,7 @@ const CardDertails = ({ article, currentUser }) => {
 
   const handleLike = () => {
     if (!hasLiked) {
-      setLikes(1);
+      setLikes((prev) => prev + 1);
       setHasLiked(true);
       const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || [];
       likedPosts.push(_id);
@@ -55,96 +64,110 @@ const CardDertails = ({ article, currentUser }) => {
   };
 
   return (
-    <div className=" max-w-screen-lg mx-auto bg-white text-[#394a20] dark:bg-[#394a20] dark:text-white shadow-lg rounded-lg overflow-hidden mt-10">
-      <div className="flex justify-center mt-4">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="max-w-screen-md mx-auto bg-accent text-base-content shadow-xl rounded-2xl overflow-hidden mt-10 p-6 md:p-10"
+    >
+      {/* Author Section */}
+      <motion.div
+        initial={{ scale: 0.9 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-col items-center mb-6"
+      >
         <img
           src={author_photo}
           alt={author_name}
-          className="w-24 h-24 object-cover rounded-full border-2 border-cyan-700"
+          className="w-24 h-24 rounded-full border-4 border-primary shadow-md object-cover"
         />
-      </div>
-      
-      <div className="p-6 dark:bg-[#394a20] dark:text-cyan-50">
-        <h1 className="text-2xl font-bold mb-2">{title}</h1>
-        <p className="text-sm text-gray-600 mb-4 dark:text-cyan-50">
-          Category: <span className="font-medium">{category}</span> |{" "}
-          {publishedAt}
+        <p className="mt-3 font-semibold flex items-center gap-2 text-sm text-primary">
+          <FontAwesomeIcon icon={faUser} />
+          {author_name}
         </p>
-        <pre className="bg-gray-100 p-4  rounded-md text-sm overflow-x-auto ">
-          <code className="text-[#394a20]">{content}</code>
+      </motion.div>
+
+      {/* Article Content */}
+      <div>
+        <h1 className="text-3xl font-bold mb-2 text-primary">{title}</h1>
+        <p className="text-sm mb-4 opacity-80">
+          <FontAwesomeIcon icon={faTag} className="text-secondary" />{" "}
+          <span className="font-medium">{category}</span> |{" "}
+          <FontAwesomeIcon icon={faCalendarDays} className="text-secondary" />{" "}
+          {formattedDate}
+        </p>
+
+        <pre className="bg-white/90 p-4 rounded-md text-sm overflow-x-auto whitespace-pre-wrap leading-relaxed text-info">
+          <code>{content}</code>
         </pre>
 
-        <ul className="mb-4 text-gray-600 space-y-1 dark:text-cyan-50">
-          {author_name && (
-            <li>
-              <strong>Posted By:</strong> {author_name}
-            </li>
-          )}
+        <ul className="mt-4 space-y-1 text-sm opacity-90">
           <li>
             <strong>Tags:</strong> {tags.join(", ")}
-          </li>
-          <li>
-            <strong>Published Date:</strong> {formattedDate}
           </li>
         </ul>
 
         {/* Like Button */}
-        <div className="flex items-center gap-2 mt-4 dark:text-cyan-50">
+        <div className="flex items-center gap-2 mt-6 text-neutral">
           <button
             onClick={handleLike}
             disabled={hasLiked}
-            className="flex items-center gap-1"
+            className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all ${
+              hasLiked
+                ? "bg-secondary text-neutral cursor-not-allowed"
+                : "bg-primary text-neutral hover:opacity-80"
+            }`}
           >
-            <FcLike size={26} />
-            <span className="text-gray-700 dark:text-cyan-50">
+            <FontAwesomeIcon icon={faHeart} />
+            <span>
               {likes} Like{likes !== 1 ? "s" : ""}
             </span>
           </button>
         </div>
 
-        {/* Comment Input */}
-        <form
-          onSubmit={handleCommentSubmit}
-          className="mt-6 space-y-2 dark:[#394a20]dark:text-cyan-50"
-        >
-          <textarea
-            className="w-full border border-[#9bff04] rounded p-2 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-            placeholder="Write a comment..."
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-            required
-          ></textarea>
+        {/* Comment Section */}
+        <form onSubmit={handleCommentSubmit} className="mt-6">
+          <div className="form-control">
+            <textarea
+              className="textarea textarea-bordered w-full focus:outline-primary"
+              placeholder="Write a comment..."
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              required
+            ></textarea>
+          </div>
           <button
             type="submit"
-            className="dark:bg-cyan-50 bg-cyan-700 text-white px-4 py-2 rounded hover:opacity-60  dark:text-cyan-700"
+            className="btn btn-primary text-neutral mt-3 flex items-center gap-2"
           >
+            <FontAwesomeIcon icon={faCommentDots} />
             Post Comment
           </button>
         </form>
 
-        {/* Scrollable for Remaining Comments */}
+        {/* Comment List */}
         {comments.length > 0 && (
-          <div className="mt-4 dark:text-cyan-50">
-            <h4 className="text-sm font-medium text-gray-600 mb-1 dark:text-cyan-50">
-              Comments:
-            </h4>
-            <div className="max-h-40 overflow-y-auto pr-2 space-y-2 scrollbar-thin scrollbar-thumb-cyan-400">
+          <div className="mt-6">
+            <h4 className="text-lg font-medium mb-2 text-primary">Comments</h4>
+            <div className="max-h-40 overflow-y-auto pr-2 space-y-3 scrollbar-thin scrollbar-thumb-primary">
               {comments.map((c, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className="bg-cyan-100 p-2 rounded text-gray-800 border border-cyan-200"
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="bg-base-200 p-3 rounded-md border border-base-300"
                 >
-                  <p className="font-semibold text-sm text-cyan-800">
-                    {c.name}
-                  </p>
-                  <p className="text-sm">{c.text}</p>
-                </div>
+                  <p className="font-semibold text-sm text-primary">{c.name}</p>
+                  <p className="text-sm opacity-90">{c.text}</p>
+                </motion.div>
               ))}
             </div>
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
