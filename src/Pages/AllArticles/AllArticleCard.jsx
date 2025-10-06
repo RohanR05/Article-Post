@@ -1,16 +1,63 @@
-import { use } from "react";
+import React, { use } from "react";
+import { motion } from "framer-motion";
 import ArticleCard from "./ArticleCard";
+import Loading from '../../Components/Loading'
 
 const AllArticleCard = ({ articlesPromise }) => {
-  const article = use(articlesPromise);
+  let articles;
+
+  try {
+    articles = use(articlesPromise);
+  } catch {
+    return <Loading />;
+  }
+
   return (
-    <div className="m-3 ">
-      <p className="text-center my-5 text-2xl font-medium bg-[#394a20] text-white ">All Articles are here!</p>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap gap-4 md:gap-7">
-        {article.map((data) => (
-          <ArticleCard data={data} key={data._id}></ArticleCard>
-        ))}
-      </div>
+    <div className="m-5">
+      <motion.h2
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-center my-8 text-3xl font-bold bg-primary text-neutral py-3 rounded-lg shadow-md"
+      >
+        📰 All Articles Are Here!
+      </motion.h2>
+
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.1 },
+          },
+        }}
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"
+      >
+        {articles.length > 0 ? (
+          articles.map((data) => (
+            <motion.div
+              key={data._id}
+              variants={{
+                hidden: { opacity: 0, scale: 0.9 },
+                visible: { opacity: 1, scale: 1 },
+              }}
+              transition={{ duration: 0.3 }}
+            >
+              <ArticleCard data={data} />
+            </motion.div>
+          ))
+        ) : (
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="col-span-full text-center text-lg font-medium text-base-content/70"
+          >
+            No articles available yet.
+          </motion.p>
+        )}
+      </motion.div>
     </div>
   );
 };
