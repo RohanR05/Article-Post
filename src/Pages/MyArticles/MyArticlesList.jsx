@@ -1,6 +1,6 @@
 import React, { use, useEffect, useState } from "react";
-// or "react-router" if you're using v5
 import Swal from "sweetalert2";
+import { motion } from "framer-motion";
 import { AuthContext } from "../../Provider/AuthContext";
 import { Link, useLoaderData } from "react-router";
 
@@ -21,22 +21,17 @@ const MyArticlesList = () => {
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      text: "This action cannot be undone!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
+      confirmButtonColor: "#394a20",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
           `https://assignment11-server-side-lyart.vercel.app/articles/${id}`,
-          {
-            credentials: "include",
-          },
-          {
-            method: "DELETE",
-          }
+          { method: "DELETE", credentials: "include" }
         )
           .then((res) => res.json())
           .then((data) => {
@@ -44,11 +39,7 @@ const MyArticlesList = () => {
               setMyArticles((prev) =>
                 prev.filter((article) => article._id !== id)
               );
-              Swal.fire(
-                "Deleted!",
-                "Your article has been deleted.",
-                "success"
-              );
+              Swal.fire("Deleted!", "Your article has been deleted.", "success");
             }
           })
           .catch((err) => console.error("Delete error:", err));
@@ -57,32 +48,50 @@ const MyArticlesList = () => {
   };
 
   return (
-    <div className="p-4 dark:bg-[#394a20] dark:text-white">
-      <h2 className="text-2xl font-bold mb-4 text-center">My Articles</h2>
-
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="p-3 sm:p-5 bg-primary/10 rounded-xl shadow-lg"
+    >
       {myArticles.length === 0 ? (
-        <p className="text-center">You have no articles created.</p>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7 }}
+          className="text-center text-base-content opacity-80 py-6"
+        >
+          You haven’t created any articles yet.
+        </motion.p>
       ) : (
-        <div className="overflow-x-auto w-full">
-          <table className="table w-full min-w-[600px] ">
-            <thead className="bg-[#394a2030] text-[#394a20] dark:bg-white">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="overflow-x-auto w-full"
+        >
+          <table className="table w-full min-w-[600px] text-sm sm:text-base">
+            <thead className="bg-primary text-neutral">
               <tr>
-                <th>Name</th>
+                <th className="hidden sm:table-cell">Author</th>
                 <th>Title</th>
-                <th>Category</th>
+                <th className="hidden sm:table-cell">Category</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              {myArticles.map((item) => (
-                <tr
+              {myArticles.map((item, index) => (
+                <motion.tr
                   key={item._id}
-                  className="dark:bg-[#394a20] dark:text-white"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                  className="bg-accent hover:bg-primary/20 transition-colors"
                 >
-                  <td>
-                    <div className="flex items-center gap-3">
+                  <td className="hidden sm:table-cell">
+                    <div className="flex items-center gap-2 sm:gap-3">
                       <div className="avatar">
-                        <div className="mask mask-squircle h-12 w-12">
+                        <div className="mask mask-squircle h-8 w-8 sm:h-12 sm:w-12">
                           <img
                             src={item.author_photo}
                             alt={item.name}
@@ -91,36 +100,38 @@ const MyArticlesList = () => {
                         </div>
                       </div>
                       <div>
-                        <div className="font-bold">{item.name}</div>
-                        <div className="text-sm text-gray-500 dark:text-cyan-50">
-                          {item.publishedAt}
-                        </div>
+                        <div className="font-semibold text-xs sm:text-sm">{item.name}</div>
+                        <div className="text-[10px] sm:text-xs opacity-70">{item.publishedAt}</div>
                       </div>
                     </div>
                   </td>
-                  <td className="text-sm">{item.title}</td>
-                  <td className="text-sm">{item.category}</td>
-                  <td className="flex gap-2">
-                    <button className="btn btn-xs bg-green-500 text-white hover:bg-green-600">
-                      <Link to={`/detailsMyArticle/${item._id}`}>Details</Link>
-                    </button>
-                    <button className="btn btn-xs bg-purple-500 text-white hover:bg-purple-600">
-                      <Link to={`/updateArticle/${item._id}`}>Edit</Link>
-                    </button>
+                  <td className="text-xs sm:text-sm text-secondary">{item.title}</td>
+                  <td className="hidden sm:table-cell text-xs sm:text-sm">{item.category}</td>
+                  <td className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                    <Link to={`/detailsMyArticle/${item._id}`}>
+                      <button className="btn btn-xs bg-primary text-neutral hover:opacity-90 w-full sm:w-auto">
+                        Details
+                      </button>
+                    </Link>
+                    <Link to={`/updateArticle/${item._id}`}>
+                      <button className="btn btn-xs bg-secondary text-neutral hover:opacity-90 w-full sm:w-auto">
+                        Edit
+                      </button>
+                    </Link>
                     <button
                       onClick={() => handleDelete(item._id)}
-                      className="btn btn-xs bg-red-500 text-white hover:bg-red-600"
+                      className="btn btn-xs bg-error text-error-content hover:opacity-90 w-full sm:w-auto"
                     >
                       Delete
                     </button>
                   </td>
-                </tr>
+                </motion.tr>
               ))}
             </tbody>
           </table>
-        </div>
+        </motion.div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

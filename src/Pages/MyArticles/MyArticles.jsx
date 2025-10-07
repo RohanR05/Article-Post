@@ -1,19 +1,33 @@
 import React, { Suspense, use } from "react";
+import { motion } from "framer-motion";
 import MyArticlesList from "./MyArticlesList";
 import { myArticlesAPI } from "../../API/MyArticlesAPI";
 import { AuthContext } from "../../Provider/AuthContext";
+import Loading from '../../Components/Loading'
 
 const MyArticles = () => {
   const { user } = use(AuthContext);
+
   return (
-    <div className="bg-white dark:bg-[#394a20] p-5">
-      <h2 className="text-center text-2xl font-medium mt-5 text-[#394a20] dark:bg-[#394a20] dark:text-white">
-        My Posted Article:{" "}
-      </h2>
-      <Suspense>
-        <MyArticlesList myArticles={myArticlesAPI(user.email)}></MyArticlesList>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      className="my-12 rounded-xl"
+    >
+      <motion.h2
+        initial={{ opacity: 0, y: -15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="text-center text-2xl font-semibold mb-6 bg-primary text-neutral py-3 rounded-md shadow-md"
+      >
+        My Posted Articles
+      </motion.h2>
+
+      <Suspense fallback={<Loading></Loading>}>
+        <MyArticlesList myArticles={myArticlesAPI(user?.email)} />
       </Suspense>
-    </div>
+    </motion.div>
   );
 };
 
