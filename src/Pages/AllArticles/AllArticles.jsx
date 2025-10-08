@@ -38,7 +38,7 @@ const AllArticles = () => {
     );
 
   return (
-    <div className="m-2 md:p-5">
+    <div className="m-2">
       <AllArticleCard articles={articles} />
     </div>
   );

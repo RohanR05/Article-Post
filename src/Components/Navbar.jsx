@@ -130,9 +130,9 @@ const Navbar = () => {
             <div className="flex gap-3 items-center">
               <button
                 onClick={handleLogOut}
-                className="btn btn-outline btn-secondary"
+                className="btn btn-sm md:btn-lg btn-outline btn-secondary"
               >
-                <FontAwesomeIcon icon={faRightFromBracket} className="mr-2" />
+                <FontAwesomeIcon icon={faRightFromBracket} className="" />
                 Log Out
               </button>
               <img
@@ -145,7 +145,7 @@ const Navbar = () => {
             <NavLink
               to="/signIn"
               className={({ isActive }) =>
-                `btn btn-outline btn-secondary ${
+                `btn btn-sm md:btn-lg btn-outline btn-secondary ${
                   isActive ? "bg-secondary text-base-100" : ""
                 }`
               }
