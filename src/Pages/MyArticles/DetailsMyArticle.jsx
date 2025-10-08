@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData } from "react-router";
+import { motion } from "framer-motion";
 
 const DetailsMyArticle = () => {
   const details = useLoaderData();
@@ -15,43 +16,70 @@ const DetailsMyArticle = () => {
   } = details;
 
   return (
-    <div className="max-w-4xl mx-auto my-6 p-6 bg-white text-[#394a20] dark:bg-[#394a20] dark:text-white shadow-lg rounded-xl border border-gray-200">
-      <div className="flex items-center gap-4 mb-4 ">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="max-w-4xl mx-auto my-8 p-6 sm:p-8 bg-accent shadow-lg rounded-2xl border border-primary"
+    >
+      {/* Author Section */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.2, duration: 0.6 }}
+        className="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-6"
+      >
         <img
           src={author_photo}
           alt={author_name}
-          className="w-12 h-12 rounded-full object-cover"
+          className="w-16 h-16 rounded-full object-cover border-2 border-primary"
         />
-        <div>
-          <h2 className="text-lg font-semibold">{author_name}</h2>
-          <p className="text-sm text-gray-500 dark:text-cyan-50">{email}</p>
+        <div className="text-center sm:text-left">
+          <h2 className="text-xl font-semibold text-secondary">{author_name}</h2>
+          <p className="text-sm text-primary">{email}</p>
         </div>
-      </div>
+      </motion.div>
 
-      <h1 className="text-2xl font-bold mb-2">{title}</h1>
-      <p className="text-sm text-gray-600 mb-4 dark:text-cyan-50">
-        Category: <span className="font-medium">{category}</span> |{" "}
-        {publishedAt}
-      </p>
-
-      <pre
-        className="bg-gray-100 p-4  dark:bg-white  dark:text-[#394a20]
-      rounded-md text-sm overflow-x-auto "
+      {/* Title & Meta */}
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.4, duration: 0.6 }}
       >
-        <code className="dark:text-[#394a20]">{content}</code>
-      </pre>
+        <h1 className="text-3xl font-bold mb-3 leading-snug text-primary">{title}</h1>
+        <p className="text-sm mb-6">
+          <span className="font-medium">Category:</span> {category} •{" "}
+          <span className="italic">{publishedAt}</span>
+        </p>
+      </motion.div>
 
-      <div className="mt-4 flex flex-wrap gap-2">
+      {/* Content */}
+      <motion.pre
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6, duration: 0.6 }}
+        className="bg-neutral border-primary text-primary p-4 rounded-lg text-sm overflow-x-auto border"
+      >
+        <code>{content}</code>
+      </motion.pre>
+
+      {/* Tags */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 0.6 }}
+        className="mt-6 flex flex-wrap justify-center sm:justify-start gap-2"
+      >
         {tags.map((tag, index) => (
           <span
             key={index}
-            className=" px-3 py-1 rounded-full text-xs font-medium"
+            className="px-4 py-1 rounded-full text-xs font-medium bg-secondary/20 text-primary shadow-sm transition hover:scale-105 duration-200"
           >
             #{tag}
           </span>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
