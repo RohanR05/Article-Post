@@ -1,6 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router";
 import Swal from "sweetalert2";
+import { motion } from "framer-motion";
 
 const UpdateArticle = () => {
   const user = useLoaderData();
@@ -33,42 +34,68 @@ const UpdateArticle = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "Your edit has been done",
+            title: "Your edit has been saved successfully!",
             showConfirmButton: false,
             timer: 1500,
           });
-          console.log(data, "after update");
           form.reset();
         }
+      })
+      .catch((err) => {
+        console.error(err);
+        Swal.fire("Error!", "Something went wrong.", "error");
       });
   };
 
   return (
-    <div className="max-w-xl mx-auto mt-10 bg-white text-[#394a20]  shadow-xl shadow-[#394a20] rounded-lg p-6 dark:bg-[#394a20] dark:text-white">
-      <h2 className="text-3xl font-bold text-center mb-6">
-        Edit Your Articles
-      </h2>
-      <form onSubmit={handlePostArticles} className="space-y-4">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="max-w-2xl mx-auto my-10 p-6 sm:p-8 bg-accent shadow-xl rounded-2xl border border-primary"
+    >
+      <motion.h2
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.6 }}
+        className="text-2xl sm:text-3xl font-bold text-center text-primary mb-6"
+      >
+        Edit Your Article
+      </motion.h2>
+
+      <motion.form
+        onSubmit={handlePostArticles}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4, duration: 0.6 }}
+        className="space-y-5"
+      >
+        {/* Title */}
         <div>
-          <label className="label">Title</label>
+          <label className="label text-sm font-medium text-primary">
+            Title
+          </label>
           <input
             name="title"
             defaultValue={user.title}
-            placeholder="Enter title name"
-            className="input input-bordered w-full dark:bg-white dark:text-[#394a20]"
+            placeholder="Enter article title"
+            className="input input-bordered w-full bg-neutral text-primary border-primary"
             required
           />
         </div>
 
+        {/* Category */}
         <div>
-          <label className="label">Category</label>
+          <label className="label text-sm font-medium text-primary">
+            Category
+          </label>
           <select
             name="category"
             defaultValue={user.category}
-            className="select select-bordered w-full dark:bg-white dark:text-[#394a20]"
+            className="select select-bordered w-full bg-neutral text-primary border-primary"
             required
           >
-            <option defaultValue={user.category}>Select a category</option>
+            <option disabled>Select a category</option>
             <option>History</option>
             <option>Science</option>
             <option>Sports</option>
@@ -81,49 +108,60 @@ const UpdateArticle = () => {
           </select>
         </div>
 
+        {/* Content */}
         <div>
-          <label className="label">Content</label>
+          <label className="label text-sm font-medium text-primary">
+            Content
+          </label>
           <textarea
             name="content"
             defaultValue={user.content}
-            placeholder="Describe your thoughts"
-            className="textarea textarea-bordered w-full dark:bg-white dark:text-[#394a20]"
+            placeholder="Describe your thoughts..."
+            rows={5}
+            className="textarea textarea-bordered w-full bg-neutral text-primary border-primary"
             required
           />
         </div>
 
+        {/* Tags */}
         <div>
-          <label className="label">Tags</label>
+          <label className="label text-sm font-medium text-primary">Tags</label>
           <input
             name="tags"
             type="text"
             defaultValue={user.tags}
-            className="input input-bordered w-full dark:bg-white dark:text-[#394a20]"
+            placeholder="e.g., tech, science, ai"
+            className="input input-bordered w-full bg-neutral text-primary border-primary"
             required
-            placeholder="Tags (Separeted by comma)"
           />
         </div>
 
+        {/* Thumbnail */}
         <div>
-          <label className="label">Thumbnail Image</label>
+          <label className="label text-sm font-medium text-primary">
+            Thumbnail Image
+          </label>
           <input
             name="author_photo"
             type="text"
             defaultValue={user.author_photo}
             placeholder="https://example.com/image.jpg"
-            className="input input-bordered w-full dark:bg-white dark:text-[#394a20]"
+            className="input input-bordered w-full bg-neutral text-primary border-primary"
             required
           />
         </div>
 
-        <button
+        {/* Submit Button */}
+        <motion.button
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
           type="submit"
-          className="btn bg-[#394a20] text-white w-full mt-4"
+          className="btn bg-primary text-neutral w-full mt-4 font-semibold shadow-md"
         >
-          Post
-        </button>
-      </form>
-    </div>
+          Update Article
+        </motion.button>
+      </motion.form>
+    </motion.div>
   );
 };
 
