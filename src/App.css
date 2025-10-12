@@ -20,7 +20,7 @@ html {
 
 @plugin "daisyui/theme" {
   name: "dark";
-  --color-primary: #f00000;  
+  --color-primary: #009000;  
   --color-secondary: #facc15; 
   --color-accent: #1a2238;   
   --color-neutral: #000000; 
