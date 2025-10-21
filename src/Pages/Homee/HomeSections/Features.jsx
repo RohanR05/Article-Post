@@ -79,7 +79,7 @@ const Features = () => {
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: index * 0.12 }}
                 viewport={{ once: true }}
-                className="rounded-2xl shadow-lg p-6 transform transition hover:-translate-y-2 hover:shadow-2xl"
+                className="rounded-2xl shadow-lg shadow-primary/40 p-6 transform transition hover:-translate-y-2 hover:shadow-2xl"
                 style={{
                   background: "var(--color-accent)", // card background from your theme
                 }}
