@@ -37,7 +37,7 @@ const Stats = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: idx * 0.2 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center bg-accent rounded-2xl shadow-lg shadow-primary/40 p-6 w-48 md:w-56 hover:shadow-2xl transition-shadow"
+            className="flex flex-col items-center bg-accent rounded-2xl shadow-lg shadow-primary/40 border-l-6  p-6 w-48 md:w-56 hover:shadow-2xl transition-shadow"
           >
             {/* Font Awesome Icon */}
             <div className="text-4xl mb-2 text-primary">
