@@ -85,7 +85,7 @@ const Navbar = () => {
 
   return (
     <div className="relative z-50">
-      <div className="navbar fixed top-0 right-0 left-0 bg-base-100/50 backdrop-blur-md text-primary font-semibold shadow-md">
+      <div className="navbar fixed top-0 right-0 left-0 bg-base-100/50 backdrop-blur-md text-primary font-semibold shadow-md shadow-primary/40">
         {/* Navbar Start */}
         <div className="navbar-start">
           {/* Dropdown for Mobile */}
