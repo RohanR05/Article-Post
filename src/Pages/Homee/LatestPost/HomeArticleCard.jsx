@@ -15,7 +15,7 @@ const HomeArticleCard = ({ data }) => {
     <motion.div
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.97 }}
-      className="card bg-accent shadow-md hover:shadow-xl transition-shadow duration-300 rounded-xl h-full"
+      className="card bg-accent shadow-md shadow-primary/40  hover:shadow-xl hover:shadow-secondary/40 transition-shadow duration-300 rounded-xl h-full"
     >
       <div className="card-body flex flex-col items-center text-center p-6 h-full">
         {/* Author Photo */}
