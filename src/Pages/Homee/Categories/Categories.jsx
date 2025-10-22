@@ -1,10 +1,37 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router";
 import { motion } from "framer-motion";
+import {
+  FaPenNib,
+  FaLightbulb,
+  FaGlobe,
+  FaHeart,
+  FaLaptopCode,
+  FaCamera,
+  FaBookOpen,
+  FaMusic,
+} from "react-icons/fa";
 
 const Categories = () => {
   const article = useLoaderData();
   const categories = [...new Set(article.map((a) => a.category))];
+
+  // Define icons for each category (fallback: FaBookOpen)
+  const getIcon = (category) => {
+    const map = {
+      writing: <FaPenNib className="text-secondary text-3xl mb-3" />,
+      ideas: <FaLightbulb className="text-secondary text-3xl mb-3" />,
+      travel: <FaGlobe className="text-secondary text-3xl mb-3" />,
+      lifestyle: <FaHeart className="text-secondary text-3xl mb-3" />,
+      tech: <FaLaptopCode className="text-secondary text-3xl mb-3" />,
+      photography: <FaCamera className="text-secondary text-3xl mb-3" />,
+      education: <FaBookOpen className="text-secondary text-3xl mb-3" />,
+      music: <FaMusic className="text-secondary text-3xl mb-3" />,
+    };
+    return map[category.toLowerCase()] || (
+      <FaBookOpen className="text-secondary text-3xl mb-3" />
+    );
+  };
 
   return (
     <section className="py-12 px-4">
@@ -35,7 +62,10 @@ const Categories = () => {
                 text-center cursor-pointer bg-accent hover:scale-110 hover:shadow-xl hover:shadow-secondary/40 
                 transition-all duration-300 ease-in-out"
               >
-                <span className="block text-xl font-medium">{category}</span>
+                {getIcon(category)}
+                <span className="block text-lg font-semibold capitalize">
+                  {category}
+                </span>
               </div>
             </Link>
           </motion.div>
