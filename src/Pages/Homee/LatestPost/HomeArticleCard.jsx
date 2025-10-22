@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
+import { FaUser, FaCalendarAlt, FaBookOpen } from "react-icons/fa";
 
 const HomeArticleCard = ({ data }) => {
   const { _id, title, author_name, author_photo, publishedAt } = data;
@@ -15,7 +16,7 @@ const HomeArticleCard = ({ data }) => {
     <motion.div
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.97 }}
-      className="card bg-accent shadow-md shadow-primary/40  hover:shadow-xl hover:shadow-secondary/40 transition-shadow duration-300 rounded-xl h-full"
+      className="card bg-accent shadow-md shadow-primary/40 hover:shadow-xl hover:shadow-secondary/40 transition-shadow duration-300 rounded-xl h-full"
     >
       <div className="card-body flex flex-col items-center text-center p-6 h-full">
         {/* Author Photo */}
@@ -25,25 +26,28 @@ const HomeArticleCard = ({ data }) => {
           alt={author_name}
         />
 
-        {/* Author */}
-        <h2 className="card-title mt-3 text-lg font-semibold text-primary">
-          {author_name}
-        </h2>
+        {/* Author with Icon */}
+        <div className="flex items-center gap-2 mt-3 text-info font-semibold text-lg">
+          <FaUser className="text-secondary" />
+          <span>{author_name}</span>
+        </div>
 
-        {/* Article Title */}
-        <p className="mt-2 text-sm md:text-base font-medium text-secondary line-clamp-2">
-          {title}
-        </p>
+        {/* Article Title with Icon */}
+        <div className="flex items-center gap-2 mt-2 text-info line-clamp-2 text-sm md:text-base font-medium">
+          <FaBookOpen className="text-secondary" />
+          <p>{title}</p>
+        </div>
 
-        {/* Date */}
-        <p className="text-xs opacity-80 mb-4">
-          Published: {formattedDate}
-        </p>
+        {/* Date with Icon */}
+        <div className="flex items-center gap-2 text-xs opacity-80 mt-2 mb-4">
+          <FaCalendarAlt className="text-secondary" />
+          <span>Published: {formattedDate}</span>
+        </div>
 
         {/* Button (sticks at bottom) */}
         <div className="card-actions mt-auto">
           <Link to={`/cardDetails/${_id}`}>
-            <button className="btn btn-sm btn-primary btn-outline hover:text-accent transition-colors duration-300">
+            <button className=" btn btn-sm btn-secondary btn-outline transition-colors duration-300">
               Read More
             </button>
           </Link>
