@@ -26,7 +26,7 @@ const Stats = () => {
         viewport={{ once: true }}
         className="text-4xl md:text-5xl font-bold mb-12"
       >
-        📊 Website <span className="text-secondary">Statistics</span>
+        Website <span className="text-secondary">Statistics</span>
       </motion.h1>
 
       <div className="flex flex-wrap justify-center gap-10">
@@ -37,22 +37,20 @@ const Stats = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: idx * 0.2 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center bg-accent rounded-2xl shadow-lg shadow-primary/40 border-l-6  p-6 w-48 md:w-56 hover:shadow-2xl transition-shadow"
+            className="flex flex-col items-center bg-accent rounded-2xl shadow-lg shadow-primary/40 border-l-6 border-secondary p-6 w-48 md:w-56 hover:shadow-2xl hover:shadow-secondary/50 transition-shadow"
           >
             {/* Font Awesome Icon */}
-            <div className="text-4xl mb-2 text-primary">
+            <div className="text-4xl mb-2 text-secondary">
               <FontAwesomeIcon icon={stat.icon} />
             </div>
 
             {/* Value */}
-            <span className="text-3xl font-bold text-secondary">
+            <span className="text-3xl font-bold text-primary">
               {stat.value}
             </span>
 
             {/* Label */}
-            <span className="text-sm font-medium text-primary">
-              {stat.label}
-            </span>
+            <span className="text-sm font-medium text-info">{stat.label}</span>
           </motion.div>
         ))}
       </div>
