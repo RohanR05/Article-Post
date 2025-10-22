@@ -18,6 +18,7 @@ import Home from "./Pages/Homee/Home";
 import SignIn from "./Components/SignIn";
 import SignUp from "./Components/SignUp";
 import CategoryArticles from "./Pages/Homee/Categories/CategoryCard";
+import AuthLayout from "./MainLayout/AuthLayout";
 
 const router = createBrowserRouter([
   {
@@ -32,14 +33,6 @@ const router = createBrowserRouter([
             credentials: "include",
           }).then((res) => res.json()),
         hydrateFallbackElement: <Loading></Loading>,
-      },
-      {
-        path: "signIn",
-        Component: SignIn,
-      },
-      {
-        path: "signUp",
-        Component: SignUp,
       },
       {
         path: "allArticles",
@@ -115,6 +108,16 @@ const router = createBrowserRouter([
       {
         path: "*",
         element: <NotFound />,
+      },
+    ],
+  },
+  {
+    path: "/",
+    Component: AuthLayout,
+    children: [
+      {
+        path: "signIn",
+        Component: SignIn,
       },
     ],
   },
