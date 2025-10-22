@@ -14,7 +14,6 @@ const Features = () => {
       description:
         "Write and share your thoughts with the world through our easy-to-use posting system.",
       icon: PencilSquareIcon,
-      // uses your CSS variables: --color-primary and --color-secondary
       gradient:
         "linear-gradient(90deg, var(--color-primary), var(--color-secondary))",
     },
@@ -53,9 +52,9 @@ const Features = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-primary dark:text-primary mb-4"
+          className="text-4xl font-bold text-primary mb-4"
         >
-          Platform Features
+          Platform <span className="text-secondary">Features</span>
         </motion.h2>
 
         <motion.p
@@ -63,7 +62,7 @@ const Features = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.12 }}
           viewport={{ once: true }}
-          className="text-sm md:text-base text-secondary dark:text-gray-300 mb-12 max-w-2xl mx-auto"
+          className="text-sm md:text-base text-info mb-12 max-w-2xl mx-auto"
         >
           Everything you need to share your ideas and connect with readers.
         </motion.p>
@@ -79,29 +78,26 @@ const Features = () => {
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: index * 0.12 }}
                 viewport={{ once: true }}
-                className="rounded-2xl shadow-lg shadow-primary/40 p-6 transform transition hover:-translate-y-2 hover:shadow-2xl"
+                className="rounded-2xl shadow-lg shadow-primary/40 p-6 transform transition hover:-translate-y-2 hover:shadow-2xl hover:shadow-secondary/50"
                 style={{
-                  background: "var(--color-accent)", // card background from your theme
+                  background: "var(--color-accent)",
                 }}
               >
                 <motion.div
                   whileHover={{ scale: 1.08 }}
                   className="w-16 h-16 mx-auto mb-4 rounded-xl flex items-center justify-center"
                   style={{
-                    // use the gradient defined per feature that references your CSS variables
                     background: feature.gradient,
                     boxShadow: "0 6px 18px rgba(0,0,0,0.08)",
                   }}
                 >
-                  <Icon className="h-8 w-8 text-accent" />
+                  <Icon className="h-8 w-8 text-info" />
                 </motion.div>
 
-                <h3 className="text-lg font-semibold text-primary dark:text-white mb-2">
+                <h3 className="text-lg font-semibold text-primary mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-secondary dark:text-gray-300">
-                  {feature.description}
-                </p>
+                <p className="text-sm text-info">{feature.description}</p>
               </motion.div>
             );
           })}
