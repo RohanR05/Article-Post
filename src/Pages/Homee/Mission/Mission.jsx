@@ -1,12 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { 
-  faGear, 
-  faDatabase, 
-  faGem, 
-  faFire, 
-  faKey 
+import {
+  faGear,
+  faDatabase,
+  faGem,
+  faFire,
+  faKey,
 } from "@fortawesome/free-solid-svg-icons";
 import { faReact, faCss3Alt } from "@fortawesome/free-brands-svg-icons";
 
@@ -30,7 +30,7 @@ const Mission = () => {
         viewport={{ once: true }}
         className="text-4xl md:text-5xl font-bold mb-8"
       >
-        💡 Our <span className="text-secondary">Mission</span>
+        Our <span className="text-secondary">Mission</span>
       </motion.h2>
 
       <motion.p
@@ -38,7 +38,7 @@ const Mission = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
         viewport={{ once: true }}
-        className="text-xl md:text-2xl max-w-4xl mx-auto mb-6 leading-relaxed"
+        className="text-xl md:text-2xl max-w-4xl mx-auto mb-6 leading-relaxed text-info"
       >
         “Empowering voices, protecting privacy, and connecting communities — one
         thoughtful article at a time.”
@@ -49,7 +49,7 @@ const Mission = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
         viewport={{ once: true }}
-        className="text-lg md:text-xl max-w-3xl mx-auto mb-6 leading-relaxed"
+        className="text-lg md:text-xl max-w-3xl mx-auto mb-6 text-info leading-relaxed"
       >
         Built with Node.js, React, MongoDB, Tailwind CSS, DaisyUI, JavaScript,
         Firebase, and JWT for a safe and modern social platform.
@@ -67,7 +67,7 @@ const Mission = () => {
             key={idx}
             className="px-3 py-1 rounded-full bg-secondary/10 hover:bg-primary/20 transition flex items-center gap-2"
           >
-            <FontAwesomeIcon icon={tech.icon} className="text-primary" />
+            <FontAwesomeIcon icon={tech.icon} className="text-secondary" />
             {tech.name}
           </span>
         ))}
