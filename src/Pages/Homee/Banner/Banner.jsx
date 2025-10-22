@@ -1,48 +1,62 @@
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
-
-import img1 from "../../../assets/1.png";
-import img2 from "../../../assets/2.png";
-import img3 from "../../../assets/3.png";
+import React from "react";
+import { motion } from "framer-motion";
+import Lottie from "lottie-react";
+import { FaPenNib, FaGlobe, FaUsers } from "react-icons/fa";
+import bannerAnimation from "../../../assets/Banner.json";
 
 const Banner = () => {
   return (
-    <div
+    <section
       data-aos="zoom-out"
-      data-aos-duration="2000"
-      className="p-1 rounded-2xl overflow-hidden mx-auto" // max width
+      data-aos-duration="1500"
+      className="w-full bg-neutral rounded-2xl flex flex-col md:flex-row items-center justify-between px-6 md:px-12 py-10 md:py-16 gap-8 overflow-hidden"
     >
-      <Carousel
-        autoPlay
-        infiniteLoop
-        transitionTime={1400}
-        showThumbs={false}
-        showStatus={false}
-        emulateTouch
+      {/* Text Section */}
+      <motion.div
+        initial={{ opacity: 0, x: -60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+        className="flex-1 text-center md:text-left space-y-5"
       >
-        <div>
-          <img
-            src={img1}
-            alt="Banner 1"
-            className="rounded-2xl max-h-[500px]  object-cover"
-          />
+        <div className="flex items-center justify-center md:justify-start gap-3 text-secondary text-2xl">
+          <FaPenNib />
+          <FaGlobe />
+          <FaUsers />
         </div>
-        <div>
-          <img
-            src={img2}
-            alt="Banner 2"
-            className="rounded-2xl max-h-[500px] object-cover"
-          />
-        </div>
-        <div>
-          <img
-            src={img3}
-            alt="Banner 3"
-            className="rounded-2xl max-h-[500px] object-cover"
-          />
-        </div>
-      </Carousel>
-    </div>
+
+        <h1 className="text-3xl md:text-5xl font-extrabold text-primary">
+          Share Your Voice with the World
+        </h1>
+
+        <p className="text-base md:text-lg text-secondary max-w-md mx-auto md:mx-0">
+          Write articles, express ideas, and inspire others in a community built
+          for thinkers and creators like you.
+        </p>
+
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          className="btn btn-primary text-neutral font-semibold mt-4"
+        >
+          Start Writing
+        </motion.button>
+      </motion.div>
+
+      {/* Animation Section */}
+      <motion.div
+        initial={{ opacity: 0, x: 60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+        className="flex-1 flex justify-center"
+      >
+        <Lottie
+          animationData={bannerAnimation}
+          loop
+          autoplay
+          className="w-full max-w-[400px] md:max-w-[500px]"
+        />
+      </motion.div>
+    </section>
   );
 };
 
