@@ -67,7 +67,7 @@ const CardDertails = ({ article, currentUser }) => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="max-w-screen-md mx-auto bg-accent text-base-content shadow-xl rounded-2xl overflow-hidden mt-10 p-6 md:p-10"
+      className="max-w-screen-xl mx-auto bg-accent text-base-content shadow-xl rounded-2xl overflow-hidden mt-10 p-6 md:p-10"
     >
       {/* Author Section */}
       <motion.div
@@ -97,13 +97,13 @@ const CardDertails = ({ article, currentUser }) => {
           {formattedDate}
         </p>
 
-        <pre className="bg-white/90 p-4 rounded-md text-sm overflow-x-auto whitespace-pre-wrap leading-relaxed text-info">
+        <pre className="bg-base-100 p-4 rounded-md text-sm overflow-x-auto whitespace-pre-wrap leading-relaxed text-info">
           <code>{content}</code>
         </pre>
 
         <ul className="mt-4 space-y-1 text-sm opacity-90">
           <li>
-            <strong>Tags:</strong> {tags.join(", ")}
+            <strong className="text-primary">Tags:</strong> {tags.join(", ")}
           </li>
         </ul>
 
@@ -138,7 +138,7 @@ const CardDertails = ({ article, currentUser }) => {
           </div>
           <button
             type="submit"
-            className="btn btn-primary text-neutral mt-3 flex items-center gap-2"
+            className="btn btn-secondary text-neutral mt-3 flex items-center gap-2"
           >
             <FontAwesomeIcon icon={faCommentDots} />
             Post Comment
