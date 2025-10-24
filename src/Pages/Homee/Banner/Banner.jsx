@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import { FaPenNib, FaGlobe, FaUsers } from "react-icons/fa";
 import bannerAnimation from "../../../assets/Banner.json";
+import { NavLink } from "react-router";
 
 const Banner = () => {
   return (
@@ -38,7 +39,7 @@ const Banner = () => {
           whileTap={{ scale: 0.95 }}
           className="btn btn-primary text-neutral font-semibold mt-4"
         >
-          Start Writing
+          <NavLink to={"/postArticles"}>Start Writing</NavLink>
         </motion.button>
       </motion.div>
 
