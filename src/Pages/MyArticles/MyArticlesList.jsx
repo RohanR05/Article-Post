@@ -52,7 +52,7 @@ const MyArticlesList = () => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="p-3 sm:p-5 bg-primary/10 rounded-xl shadow-lg"
+      className="bg-primary/10 rounded-xl shadow-lg"
     >
       {myArticles.length === 0 ? (
         <motion.p

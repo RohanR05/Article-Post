@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import MyArticlesList from "./MyArticlesList";
 import { myArticlesAPI } from "../../API/MyArticlesAPI";
 import { AuthContext } from "../../Provider/AuthContext";
-import Loading from '../../Components/Loading'
+import Loading from "../../Components/Loading";
 
 const MyArticles = () => {
   const { user } = use(AuthContext);
@@ -19,9 +19,9 @@ const MyArticles = () => {
         initial={{ opacity: 0, y: -15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="text-center text-2xl font-semibold mb-6 bg-primary text-neutral py-3 rounded-md shadow-md"
+        className="text-center text-2xl md:text-4xl font-bold text-primary my-6"
       >
-        My Posted Articles
+        My Posted <span className="text-secondary">Articles</span>
       </motion.h2>
 
       <Suspense fallback={<Loading></Loading>}>
