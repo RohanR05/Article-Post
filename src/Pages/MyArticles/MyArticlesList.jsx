@@ -47,7 +47,11 @@ const MyArticlesList = () => {
               setMyArticles((prev) =>
                 prev.filter((article) => article._id !== id)
               );
-              Swal.fire("Deleted!", "Your article has been deleted.", "success");
+              Swal.fire(
+                "Deleted!",
+                "Your article has been deleted.",
+                "success"
+              );
             }
           })
           .catch((err) => console.error("Delete error:", err));
@@ -139,34 +143,45 @@ const MyArticlesList = () => {
             transition={{ duration: 1 }}
             className="hidden sm:block overflow-x-auto w-full"
           >
-            <table className="table w-full min-w-[650px] text-sm sm:text-base border border-base-300 rounded-lg overflow-hidden">
-              <thead className="bg-primary text-neutral">
+            <table className="table w-full min-w-[750px] border border-base-300 rounded-lg overflow-hidden">
+              <thead className="bg-primary text-neutral text-sm">
                 <tr>
-                  <th className="hidden sm:table-cell flex items-center gap-2">
-                    <FaUser className="text-secondary" /> Author
+                  <th className="w-[25%] py-3 px-4 text-left">
+                    <div className="flex items-center gap-2">
+                      <FaUser className="text-secondary" />
+                      <span>Author</span>
+                    </div>
                   </th>
-                  <th className="flex items-center gap-2">
-                    <FaBook className="text-secondary" /> Title
+                  <th className="w-[35%] py-3 px-4 text-left">
+                    <div className="flex items-center gap-2">
+                      <FaBook className="text-secondary" />
+                      <span>Title</span>
+                    </div>
                   </th>
-                  <th className="hidden sm:table-cell flex items-center gap-2">
-                    <FaTag className="text-secondary" /> Category
+                  <th className="w-[20%] py-3 px-4 text-left">
+                    <div className="flex items-center gap-2">
+                      <FaTag className="text-secondary" />
+                      <span>Category</span>
+                    </div>
                   </th>
-                  <th>Actions</th>
+                  <th className="w-[20%] py-3 px-4 text-center">Actions</th>
                 </tr>
               </thead>
-              <tbody>
+
+              <tbody className="text-info text-sm">
                 {myArticles.map((item, index) => (
                   <motion.tr
                     key={item._id}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.05 }}
-                    className="bg-accent hover:bg-primary/15 transition-colors border-b border-base-300"
+                    className="hover:bg-primary/15 transition-colors border-b border-base-300"
                   >
-                    <td className="hidden sm:table-cell">
-                      <div className="flex items-center gap-2 sm:gap-3">
+                    {/* Author */}
+                    <td className="py-3 px-4 align-middle">
+                      <div className="flex items-center gap-3">
                         <div className="avatar">
-                          <div className="mask mask-squircle h-8 w-8 sm:h-10 sm:w-10">
+                          <div className="mask mask-squircle h-10 w-10">
                             <img
                               src={item.author_photo}
                               alt={item.name}
@@ -175,36 +190,48 @@ const MyArticlesList = () => {
                           </div>
                         </div>
                         <div>
-                          <div className="font-semibold text-sm text-primary flex items-center gap-1">
+                          <p className="font-semibold text-primary flex items-center gap-1">
                             <FaUser className="text-secondary" /> {item.name}
-                          </div>
-                          <div className="text-[10px] sm:text-xs opacity-70">
+                          </p>
+                          <p className="text-xs opacity-70 mt-0.5">
                             {item.publishedAt}
-                          </div>
+                          </p>
                         </div>
                       </div>
                     </td>
-                    <td className="text-info text-sm">{item.title}</td>
-                    <td className="hidden sm:table-cell text-sm">
+
+                    {/* Title */}
+                    <td className="py-3 px-4 align-middle">
+                      <span className="font-medium text-info line-clamp-2">
+                        {item.title}
+                      </span>
+                    </td>
+
+                    {/* Category */}
+                    <td className="py-3 px-4 align-middle text-secondary">
                       {item.category}
                     </td>
-                    <td className="flex flex-col sm:flex-row gap-2 sm:gap-3 py-2">
-                      <Link to={`/detailsMyArticle/${item._id}`}>
-                        <button className="btn btn-xs bg-primary text-neutral flex items-center gap-1 sm:gap-2">
-                          <FaEye className="text-secondary" /> View
+
+                    {/* Actions */}
+                    <td className="py-3 px-4 text-center align-middle">
+                      <div className="flex justify-center gap-2">
+                        <Link to={`/detailsMyArticle/${item._id}`}>
+                          <button className="btn btn-xs bg-primary text-neutral flex items-center gap-1">
+                            <FaEye className="text-secondary" /> View
+                          </button>
+                        </Link>
+                        <Link to={`/updateArticle/${item._id}`}>
+                          <button className="btn btn-xs bg-secondary text-neutral flex items-center gap-1">
+                            <FaEdit /> Edit
+                          </button>
+                        </Link>
+                        <button
+                          onClick={() => handleDelete(item._id)}
+                          className="btn btn-xs bg-error text-error-content flex items-center gap-1"
+                        >
+                          <FaTrashAlt /> Delete
                         </button>
-                      </Link>
-                      <Link to={`/updateArticle/${item._id}`}>
-                        <button className="btn btn-xs bg-secondary text-neutral flex items-center gap-1 sm:gap-2">
-                          <FaEdit /> Edit
-                        </button>
-                      </Link>
-                      <button
-                        onClick={() => handleDelete(item._id)}
-                        className="btn btn-xs bg-error text-error-content flex items-center gap-1 sm:gap-2"
-                      >
-                        <FaTrashAlt /> Delete
-                      </button>
+                      </div>
                     </td>
                   </motion.tr>
                 ))}
