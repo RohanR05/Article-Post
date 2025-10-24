@@ -28,8 +28,8 @@ const cardVariants = {
 const AllArticleCard = ({ articles }) => {
   return (
     <div className="m-3">
-      <p className="text-center my-5 text-2xl font-medium bg-primary text-primary-content py-2 rounded-md shadow">
-        All Articles are here!
+      <p className="text-center font-bold text-2xl md:text-4xl my-6 text-primary">
+        All <span className="text-secondary">Articles</span> are here!
       </p>
 
       <motion.div

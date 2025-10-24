@@ -1,6 +1,11 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import { FaUser, FaCalendarAlt, FaArrowRight } from "react-icons/fa";
+import {
+  FaUser,
+  FaCalendarAlt,
+  FaArrowRight,
+  FaNewspaper,
+} from "react-icons/fa";
 
 const ArticleCard = ({ data }) => {
   const { _id, title, author_name, publishedAt, author_photo } = data;
@@ -16,7 +21,7 @@ const ArticleCard = ({ data }) => {
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.98 }}
       transition={{ type: "spring", stiffness: 200 }}
-      className="card bg-base-100 text-base-content shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl overflow-hidden"
+      className="card bg-primary/10 text-base-content shadow-lg shadow-primary/40 hover:shadow-secondary/40 hover:shadow-xl transition-all duration-300 rounded-xl overflow-hidden"
     >
       <div className="card-body flex flex-col items-center text-center space-y-4 p-6 bg-accent">
         <motion.img
@@ -28,20 +33,21 @@ const ArticleCard = ({ data }) => {
         />
 
         <h2 className="text-xl font-bold flex items-center gap-2 text-primary">
-          <FaUser /> {author_name}
+          <FaUser className="text-secondary" /> {author_name}
         </h2>
 
-        <p className="text-lg font-medium text-secondary">
-          {title.length > 45 ? title.slice(0, 45) + "..." : title}
-        </p>
+        <div className="flex items-center gap-2 text-lg font-semibold text-info">
+          <FaNewspaper className="text-secondary text-xl" />
+          <p>{title.length > 45 ? title.slice(0, 45) + "..." : title}</p>
+        </div>
 
         <p className="flex items-center gap-2 text-sm opacity-70">
-          <FaCalendarAlt /> {formattedDate}
+          <FaCalendarAlt className="text-secondary" /> {formattedDate}
         </p>
 
         <Link
           to={`/cardDetails/${_id}`}
-          className="btn btn-primary text-base-100 w-full mt-2 flex items-center justify-center gap-2"
+          className="btn btn-secondary text-base-100 w-full mt-2 flex items-center justify-center gap-2"
         >
           Read More <FaArrowRight />
         </Link>
