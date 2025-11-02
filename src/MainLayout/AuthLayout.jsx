@@ -5,8 +5,8 @@ import bannerAnimation from "../assets/Login.json";
 
 const AuthLayout = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-neutral p-4 md:p-8">
-      <div className="flex flex-col md:flex-row items-center w-full max-w-screen-md bg-accent rounded-2xl shadow-xl shadow-primary/50 overflow-hidden md:gap-8">
+    <div className="min-h-screen flex items-center justify-center bg-neutral">
+      <div className="flex flex-col md:flex-row items-center w-full bg-accent rounded-2xl shadow-xl shadow-primary/50 overflow-hidden md:gap-8">
         {/* Animation Section */}
         <div className="w-full md:w-1/2 flex flex-col items-center justify-center p-4">
           {/* Back to Home Button */}
