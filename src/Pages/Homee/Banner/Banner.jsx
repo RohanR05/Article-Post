@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import { FaPenNib, FaGlobe, FaUsers } from "react-icons/fa";
-import bannerAnimation from "../../../assets/Banner.json";
+import animi from '../../../assets/article.json'
 import { NavLink } from "react-router";
 
 const Banner = () => {
@@ -10,7 +10,7 @@ const Banner = () => {
     <section
       data-aos="zoom-out"
       data-aos-duration="1500"
-      className="w-full bg-neutral rounded-2xl flex flex-col md:flex-row items-center justify-between px-6 md:px-12 py-10 md:py-16 gap-8 overflow-hidden"
+      className="w-full bg-secondary/20 rounded-2xl flex flex-col md:flex-row items-center justify-between px-6 md:px-12 py-10 md:py-16 gap-8 overflow-hidden"
     >
       {/* Text Section */}
       <motion.div
@@ -51,7 +51,7 @@ const Banner = () => {
         className="flex-1 flex justify-center"
       >
         <Lottie
-          animationData={bannerAnimation}
+          animationData={animi}
           loop
           autoplay
           className="w-full max-w-[400px] md:max-w-[500px]"
