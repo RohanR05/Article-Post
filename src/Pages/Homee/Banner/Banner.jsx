@@ -10,7 +10,7 @@ const Banner = () => {
     <section
       data-aos="zoom-out"
       data-aos-duration="1500"
-      className="w-full bg-secondary/20 rounded-2xl flex flex-col md:flex-row items-center justify-between px-6 md:px-12 py-10 md:py-16 gap-8 overflow-hidden"
+      className="w-full rounded-2xl flex flex-col md:flex-row items-center justify-between px-6 md:px-12 py-10 md:py-16 gap-8 overflow-hidden"
     >
       {/* Text Section */}
       <motion.div
